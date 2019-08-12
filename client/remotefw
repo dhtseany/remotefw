@@ -1,0 +1,117 @@
+#!/bin/sh
+
+if [ -z $1 ]
+    # Empty
+    then
+        echo "[Error] You must tell me what to do!"
+        exit 1
+fi
+
+runCommand=$1
+runCondition=$2
+optCondition=$3
+date=$("date")
+
+configCheck() {
+    if [ -f /etc/remotefw/main.cfg ]
+            then
+                    echo "/etc/remotefw/main.cfg was detected!"
+                    # rm /etc/remotefw/main.cfg
+                    # cat /etc/remotefw/main.cfg
+                    # exit 0
+                    source /etc/remotefw/main.cfg
+            else    
+                    echo "[Check] /etc/remotefw/main.cfg was not detected. I suggest you install first."
+                    remotefwConfigDir="/etc/remotefw"
+                    installDir="/usr/local/sbin"
+    fi
+}
+
+statusRptCheck() {
+    if [ -z $statusRpt ]
+        # Empty
+        then
+            echo "[Error]   It appears the statusRpt field is empty and the script cannot proceed. Sorry!"
+            exit 1
+    fi
+}
+
+remotefwInstall() {
+    echo "[$date] Installation Started."
+    # exit 0
+    # clear
+    echo "[Creating remotefw config directory] $remotefwConfigDir"
+    mkdir -p $remotefwConfigDir
+    echo "[Copying File] main.cfg to $remotefwConfigDir/main.cfg"
+    cp main.cfg $remotefwConfigDir/main.cfg
+    echo "[Copying File] remotefw to $installDir"
+    cp remotefw $installDir/remotefw
+    echo "[Setting remotefw as executable] $installDir/remotefw"
+    chmod +x $installDir/remotefw
+    exit 0
+}
+
+remotefwRemove() {
+}
+
+currentVersion() {
+    statusRptCheck
+	# The utility has the version embedded, so
+	# we execute it to check which one it is.
+	opnVer=$("/usr/local/sbin/opnsense-version")
+	echo "opnVer=\"$opnVer\"" >> $1
+    # if [ -f "${FREEBSD_VERSION}" ]; then
+	# 	${FREEBSD_VERSION}
+	# fi
+}
+
+runStatusReport() {
+    currentVersion $statusRpt
+    echo "Saved to " $statusRpt
+    exit 0
+}
+
+if [ $runCommand == "install" ]
+    then
+        configCheck
+        remotefwInstall
+fi
+
+if [ $runCommand == "remove" ]
+    then
+        configCheck
+        # Removal Script
+        echo "remotefwConfigDir is set to: $remotefwConfigDir"
+        if [ -f $remotefwConfigDir/main.cfg ]
+            then
+                rm $remotefwConfigDir/main.cfg
+                echo "[Remove] $remotefwConfigDir/main.cfg was deleted."
+            else
+                echo "[Remove] $remotefwConfigDir/main.cfg does not exist or could not be deleted."
+        fi
+
+        if [ -f $remotefwConfigDir/status.rpt ]
+            then
+                rm $remotefwConfigDir/status.rpt
+                echo "[Remove] $remotefwConfigDir/status.rpt was deleted."
+            else
+                echo "[Remove] $remotefwConfigDir/status.rpt does not exist or could not be deleted."
+        fi
+        
+        if [ -d $remotefwConfigDir ]
+            then
+                rm -rf $remotefwConfigDir
+                echo "[Remove] $remotefwConfigDir was deleted."
+            else
+                echo "[Remove] The main config directory does not exist or could not be deleted."
+        fi
+        
+        if [ -f $installDir/remotefw ]
+            then
+                rm $installDir/remotefw
+                echo "[Remove] $installDir/remotefw was deleted."
+            else
+                echo "[Remove] $installDir/remotefw does not exist or could not be deleted."
+        fi
+
+fi
