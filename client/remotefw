@@ -7,23 +7,60 @@ if [ -z $1 ]
         exit 1
 fi
 
+#=============== Start of Baked-in Variables ===============
 runCommand=$1
 runCondition=$2
 optCondition=$3
 date=$("date")
+#=============== End of Baked-in Variables ===============
 
-configCheck() {
+#=============== Start of Functions ===============
+importConfig() {
     if [ -f /etc/remotefw/main.cfg ]
             then
-                    echo "/etc/remotefw/main.cfg was detected!"
-                    # rm /etc/remotefw/main.cfg
-                    # cat /etc/remotefw/main.cfg
-                    # exit 0
-                    source /etc/remotefw/main.cfg
+                . /etc/remotefw/main.cfg
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "/etc/remotefw/main.cfg was detected!"
+                fi
+            else
+                installDir="/usr/local/sbin"
+                remotefwConfigDir="/etc/remotefw"
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Check] /etc/remotefw/main.cfg was not detected. I suggest you install first."
+                        echo "[remotefwConfigDir] $remotefwConfigDir"
+                        echo "[installDir] $installDir"
+                fi
+    fi
+}
+
+importSystemInfo() {
+    if [ -f /etc/remotefw/system.info ]
+            then
+                . /etc/remotefw/system.info
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Check] /etc/remotefw/system.info detected!"
+                fi    
             else    
-                    echo "[Check] /etc/remotefw/main.cfg was not detected. I suggest you install first."
-                    remotefwConfigDir="/etc/remotefw"
-                    installDir="/usr/local/sbin"
+                    echo "[Check] /etc/remotefw/system.info was not detected. Adoption required."
+    fi
+}
+
+createSystemInfo() {
+    if [ -f /etc/remotefw/system.info ]
+            then                    
+                echo "[FAIL] /etc/remotefw/system.info detected!"
+                echo "[FAIL] Process aborted!"
+                exit 1
+                # . /etc/remotefw/system.info
+            else
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Check] /etc/remotefw/system.info was not detected. Proceeding."
+                        exit 0
+                fi
     fi
 }
 
@@ -40,29 +77,42 @@ remotefwInstall() {
     echo "[$date] Installation Started."
     # exit 0
     # clear
-    echo "[Creating remotefw config directory] $remotefwConfigDir"
     mkdir -p $remotefwConfigDir
-    echo "[Copying File] main.cfg to $remotefwConfigDir/main.cfg"
     cp main.cfg $remotefwConfigDir/main.cfg
-    echo "[Copying File] remotefw to $installDir"
     cp remotefw $installDir/remotefw
-    echo "[Setting remotefw as executable] $installDir/remotefw"
     chmod +x $installDir/remotefw
+    echo "To start the adopt process type:"
+    echo "# remotefw adopt"
+    echo "See the Help section for more information:"
+    echo "# remotefw help"
+    echo "[$date] Installation complete."
+    if [ "$runCondition" = "audit" ];
+        then
+            echo "[mkdir] $remotefwConfigDir"
+            echo "[Copying File] main.cfg to $remotefwConfigDir/main.cfg"
+            echo "[Copying File] remotefw to $installDir"
+            echo "[Setting remotefw as executable] $installDir/remotefw"
+    fi
     exit 0
 }
 
-remotefwRemove() {
+currentVersion() {
+    # Check what the currently installed version of OPNSense is
+	opnVer=$("/usr/local/sbin/opnsense-version")
+    if [ "$runCondition" = "audit" ];
+        then
+            echo "opnVer=\"$opnVer\""
+        # else
+        #     echo "opnVer=\"$opnVer\"" >> $1
+    fi
 }
 
-currentVersion() {
-    statusRptCheck
-	# The utility has the version embedded, so
-	# we execute it to check which one it is.
-	opnVer=$("/usr/local/sbin/opnsense-version")
-	echo "opnVer=\"$opnVer\"" >> $1
-    # if [ -f "${FREEBSD_VERSION}" ]; then
-	# 	${FREEBSD_VERSION}
-	# fi
+osCheck() {
+    # opnVer=$("/usr/local/sbin/opnsense-version")
+}
+
+wanIpCheck() {
+    wanIp=$(curl -s http://whatismyip.akamai.com/)
 }
 
 runStatusReport() {
@@ -71,47 +121,113 @@ runStatusReport() {
     exit 0
 }
 
+#=============== End of Functions ===============
+
+#=============== Start of Condition Statements ===============
 if [ $runCommand == "install" ]
     then
-        configCheck
+        importConfig audit
         remotefwInstall
 fi
 
 if [ $runCommand == "remove" ]
     then
-        configCheck
-        # Removal Script
-        echo "remotefwConfigDir is set to: $remotefwConfigDir"
+        importConfig audit
+        echo "[$date] Removal Started."
         if [ -f $remotefwConfigDir/main.cfg ]
             then
                 rm $remotefwConfigDir/main.cfg
-                echo "[Remove] $remotefwConfigDir/main.cfg was deleted."
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Remove] File: $remotefwConfigDir/main.cfg was deleted."
+                fi
             else
-                echo "[Remove] $remotefwConfigDir/main.cfg does not exist or could not be deleted."
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Remove] File: $remotefwConfigDir/main.cfg does not exist or could not be deleted."
+                fi
         fi
 
         if [ -f $remotefwConfigDir/status.rpt ]
             then
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Remove] File: $remotefwConfigDir/status.rpt was deleted."
+                fi
                 rm $remotefwConfigDir/status.rpt
-                echo "[Remove] $remotefwConfigDir/status.rpt was deleted."
             else
-                echo "[Remove] $remotefwConfigDir/status.rpt does not exist or could not be deleted."
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Remove] File: $remotefwConfigDir/status.rpt does not exist or could not be deleted."
+                fi
+        fi
+
+        if [ -f $remotefwConfigDir/system.info ]
+            then
+                rm $remotefwConfigDir/system.info
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Remove] File: $remotefwConfigDir/system.info was deleted."
+                fi
+            else
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Remove] File: $remotefwConfigDir/system.info does not exist or could not be deleted."
+                fi
         fi
         
         if [ -d $remotefwConfigDir ]
             then
                 rm -rf $remotefwConfigDir
-                echo "[Remove] $remotefwConfigDir was deleted."
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Remove] Directory: $remotefwConfigDir was deleted."
+                fi
             else
-                echo "[Remove] The main config directory does not exist or could not be deleted."
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Remove] Directory: The main config directory does not exist or could not be deleted."
+                fi
         fi
         
         if [ -f $installDir/remotefw ]
             then
                 rm $installDir/remotefw
-                echo "[Remove] $installDir/remotefw was deleted."
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Remove] $installDir/remotefw was deleted."
+                fi
             else
-                echo "[Remove] $installDir/remotefw does not exist or could not be deleted."
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Remove] $installDir/remotefw does not exist or could not be deleted."
+                fi
         fi
-
+        echo "[$date] Removal complete."
+        echo "===================="
 fi
+
+# This switch is used to audit the check data 
+if [ $runCommand == "audit" ]
+    then
+        importConfig
+        # echo "[configVer] $configVer"
+        # osCheck audit
+        # currentVersion audit
+        # wanIpCheck && echo "[wanIp] $wanIp"
+        # echo "-------------------"
+        # importSystemInfo
+fi
+
+# This is the switch used to perform the initital adoption process.
+if [ $runCommand == "adopt" ]
+    then
+        importConfig
+        # osCheck audit
+        createSystemInfo audit
+        # currentVersion $systemInfo
+        # wanIpCheck && echo "[wanIP] $wanIp"
+        # echo "-------------------"
+        # importSystemInfo
+fi
+#=============== Start of Condition Statements ===============
