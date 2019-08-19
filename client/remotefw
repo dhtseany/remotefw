@@ -12,6 +12,7 @@ runCommand=$1
 runCondition=$2
 optCondition=$3
 date=$("date")
+agentVersion="1.0"
 #=============== End of Baked-in Variables ===============
 
 #=============== Start of Functions ===============
@@ -49,17 +50,16 @@ importSystemInfo() {
 }
 
 createSystemInfo() {
-    if [ -f /etc/remotefw/system.info ]
+    if [ -f $systemInfo ]
             then                    
-                echo "[FAIL] /etc/remotefw/system.info detected!"
-                echo "[FAIL] Process aborted!"
-                exit 1
+                echo "[NOTICE] $systemInfo detected!"
+                echo "[NOTICE] File moved to $systemInfo.bak"
+                mv $systemInfo $systemInfo.bak
                 # . /etc/remotefw/system.info
             else
                 if [ "$runCondition" = "audit" ];
                     then
-                        echo "[Check] /etc/remotefw/system.info was not detected. Proceeding."
-                        exit 0
+                        echo "[NOTICE] /etc/remotefw/system.info was not detected. Proceeding."
                 fi
     fi
 }
@@ -96,20 +96,97 @@ remotefwInstall() {
     exit 0
 }
 
-currentVersion() {
+currentVersionOPN() {
     # Check what the currently installed version of OPNSense is
-	opnVer=$("/usr/local/sbin/opnsense-version")
+    osVerRc=$("/usr/local/sbin/opnsense-version")
+    # osVerRc="(/usr/local/sbin/opnsense-version)"
+    # echo $osVerRc[1]
+    # exit
+    osVer="${osVerRc#* }"
+    
+    #Keep this errant line as a working example of how to pull just the arch
+    # osVer="${osVer1#* }"
     if [ "$runCondition" = "audit" ];
         then
-            echo "opnVer=\"$opnVer\""
-        # else
-        #     echo "opnVer=\"$opnVer\"" >> $1
+            # echo "[audit] osVer=\"$osVer\""
+            echo "[audit] [osVer] $osVer"
     fi
 }
 
-osCheck() {
-    # opnVer=$("/usr/local/sbin/opnsense-version")
+currentVersionpf() {
+    # Check what the currently installed version of OPNSense is
+    osVer=$(cat /etc/version)
+    if [ "$runCondition" = "audit" ];
+        then
+            echo "[audit] osVer=\"$osVer\""
+    fi
 }
+
+osTypeCheck() {
+    if [ "$runCondition" = "audit" ];
+        then
+            echo "[Audit] User has requested the osTypeCheck function."
+    fi
+
+    # Am I pfSense?
+    if [ -f /etc/platform ];
+        then
+            # echo "[Temp Notice] I made it this far."
+            # if grep -q pfsense "/etc/platform";
+            osTypeCheckOPNSense=$(`grep -q pfSense "/etc/platform"`)
+            osTypeCheckOPNSenseRc=$?
+            if [ "$osTypeCheckOPNSenseRc" = 0 ];
+                then
+                    osType="pfSense"
+                    if [ "$runCondition" = "audit" ];
+                        then
+                            echo "[Audit] The file /etc/platform was found!"
+                            echo "[Audit] This system is pfSense!"
+                    fi
+                    break
+                else
+                    if [ "$runCondition" = "audit" ];
+                        then
+                            echo "[Audit] This system is NOT pfSense!"
+                    fi
+            fi
+        else
+            if [ "$runCondition" = "audit" ];
+                then
+                    echo "[Audit] The file /etc/platform was not found."
+            fi
+    fi
+
+    # Am I OPNSense?
+    if [ -f /usr/local/sbin/opnsense-version ];
+        then
+            osTypeCheckOPNSense=$("/usr/local/sbin/opnsense-version")
+            osTypeCheckOPNSenseRc=$?
+            if [ "$osTypeCheckOPNSenseRc" = 0 ];
+                then
+                    osType="OPNSense"
+                    if [ "$runCondition" = "audit" ];
+                        then
+                            echo "[Audit] [osTypeCheckOPNSense] ${osTypeCheckOPNSense#* }"
+                    fi
+                    if [ "$runCondition" = "audit" ];
+                        then
+                            echo "[Audit] This system is OPNSense!"
+                    fi
+                else
+                    if [ "$runCondition" = "audit" ];
+                        then
+                            echo "[Audit] [osTypeCheckOPNSenseRc] $osTypeCheckOPNSenseRc"
+                            echo "[Audit] This system is NOT OPNSense!"
+                    fi
+                break
+            fi
+    fi
+}
+
+# osArchCheck(){
+
+# }
 
 wanIpCheck() {
     wanIp=$(curl -s http://whatismyip.akamai.com/)
@@ -119,6 +196,15 @@ runStatusReport() {
     currentVersion $statusRpt
     echo "Saved to " $statusRpt
     exit 0
+}
+
+cpuArchCheckpf() {
+    # Testing
+    testVarRc=$(sysctl -a | egrep -i 'hw.machine')
+    echo "[Test] "$testVarRc[@]
+    # testVar=$(cut -d' ' -f2- $testVarRc)
+    testVar=$(sed -e 's/^\w*\ *//' $testVarRc)
+    echo "[Test] $testVar"
 }
 
 #=============== End of Functions ===============
@@ -208,13 +294,42 @@ if [ $runCommand == "remove" ]
 fi
 
 # This switch is used to audit the check data 
-if [ $runCommand == "audit" ]
-    then
+if [ $runCommand == "testconfig" ]
+    then  
+        echo ""
+        echo "app info:"
+        echo "===================="
         importConfig
-        # echo "[configVer] $configVer"
-        # osCheck audit
-        # currentVersion audit
-        # wanIpCheck && echo "[wanIp] $wanIp"
+        echo "[agentVersion] $agentVersion"
+        echo "[configVer] $configVer"
+        
+        echo ""
+        echo "Performing OS Check..."
+        echo "===================="
+        osTypeCheck # audit
+        echo "[osType] $osType"
+        if [ "$osType" = "OPNSense" ];
+            then
+                currentVersionOPN
+                #audit
+        fi
+        if [ "$osType" = "pfSense" ];
+            then
+                currentVersionpf
+                #audit
+        fi
+        echo "[osVer] $osVer"
+
+        echo ""
+        echo "Detected Wan IP"
+        echo "===================="
+        wanIpCheck 
+        echo "[wanIp] $wanIp"
+        
+        echo ""
+        echo "Detected Arch Type"
+        echo "===================="
+        cpuArchCheckpf
         # echo "-------------------"
         # importSystemInfo
 fi
@@ -223,10 +338,11 @@ fi
 if [ $runCommand == "adopt" ]
     then
         importConfig
-        # osCheck audit
-        createSystemInfo audit
+        createSystemInfo
+        # osTypeCheck
+        echo "#!/bin/sh" >> $systemInfo
         # currentVersion $systemInfo
-        # wanIpCheck && echo "[wanIP] $wanIp"
+        wanIpCheck && echo "wanIp=\"$wanIp\"" >> $systemInfo
         # echo "-------------------"
         # importSystemInfo
 fi
