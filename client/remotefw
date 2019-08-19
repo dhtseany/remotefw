@@ -20,6 +20,8 @@ importConfig() {
     if [ -f /etc/remotefw/main.cfg ]
             then
                 . /etc/remotefw/main.cfg
+                remoteFwConfig="$remotefwConfigDir/main.cfg"
+
                 if [ "$runCondition" = "audit" ];
                     then
                         echo "/etc/remotefw/main.cfg was detected!"
@@ -36,6 +38,22 @@ importConfig() {
     fi
 }
 
+createSystemInfo() {
+    if [ -f $systemInfo ]
+            then                    
+                echo "[NOTICE] $systemInfo detected!"
+                echo "[NOTICE] File moved to $systemInfo.bak"
+                mv $systemInfo $systemInfo.bak
+                . /etc/remotefw/system.info
+            else
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[NOTICE] $systemInfo was not detected. Proceeding."
+                        touch $systemInfo
+                fi
+    fi
+}
+
 importSystemInfo() {
     if [ -f /etc/remotefw/system.info ]
             then
@@ -45,22 +63,7 @@ importSystemInfo() {
                         echo "[Check] /etc/remotefw/system.info detected!"
                 fi    
             else    
-                    echo "[Check] /etc/remotefw/system.info was not detected. Adoption required."
-    fi
-}
-
-createSystemInfo() {
-    if [ -f $systemInfo ]
-            then                    
-                echo "[NOTICE] $systemInfo detected!"
-                echo "[NOTICE] File moved to $systemInfo.bak"
-                mv $systemInfo $systemInfo.bak
-                # . /etc/remotefw/system.info
-            else
-                if [ "$runCondition" = "audit" ];
-                    then
-                        echo "[NOTICE] /etc/remotefw/system.info was not detected. Proceeding."
-                fi
+                createSystemInfo
     fi
 }
 
@@ -207,6 +210,55 @@ cpuArchCheckpf() {
     echo "[Test] $testVar"
 }
 
+importEncryptionKey() {
+    if [ -z $EncryptionKey ]
+        # Empty
+        then
+            # echo "[Error]   It appears the statusRpt field is empty and the script cannot proceed. Sorry!"
+            # exit 1
+            read -e -p "Enter this system's encrpytion key as provided by the dashboard under customer settings: " importEncryptionKeyRec
+            echo "You entered: $importEncryptionKeyRec"
+            read -e -p "Shall we proceed? [y/N]: " importEncryptionKeyRecConfirm
+            if [ "$importEncryptionKeyRecConfirm" = "y" ]; 
+                then
+                    EncryptionKey=$importEncryptionKeyRec
+                    if [ "$runCondition" = "audit" ];
+                        then
+                            echo "[Audit] Trigger y confirm."
+                            echo "[Audit] [importEncryptionKeyRec] $importEncryptionKeyRec"
+                            echo "[Audit] [remoteFwConfig] $remoteFwConfig"
+                    fi
+                    echo "EncryptionKey=\"$EncryptionKey\"" >> $remoteFwConfig
+                    if [ "$runCondition" = "audit" ];
+                        then
+                            echo "[Notice] Encryption key import process complete."
+                    fi
+                else
+                    echo "User chose to cancel the process. Aborting."
+                    exit 1
+            fi
+        else
+            if [ "$runCondition" = "audit" ];
+                then
+                    echo "[EncryptionKey] $EncryptionKey"
+            fi
+    fi
+}
+
+openTcpTunnel() {
+    # EncryptionKey=$1
+    if [ "$runCondition" = "audit" ];
+        then
+            echo "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            echo "[Audit] [EncryptionKey] $EncryptionKey"
+            echo "[Audit] [remotefwServerIp] $remotefwServerIp"
+            echo "[Audit] [remotefwServerPort] $remotefwServerPort"
+            echo "[Audit] [systemInfo] $systemInfo"
+            echo "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    fi
+    # openssl enc -e -aes-256-cbc -out $systemInfo -k $EncryptionKey | nc $remotefwServerIp $remotefwServerPort -in $systemInfo
+    # openssl enc -e -aes-256-cbc -out $systemInfo -k $EncryptionKey | nc $remotefwServerIp $remotefwServerPort
+}
 #=============== End of Functions ===============
 
 #=============== Start of Condition Statements ===============
@@ -338,12 +390,24 @@ fi
 if [ $runCommand == "adopt" ]
     then
         importConfig
-        createSystemInfo
-        # osTypeCheck
+        importSystemInfo
         echo "#!/bin/sh" >> $systemInfo
-        # currentVersion $systemInfo
+        osTypeCheck
+        if [ "$osType" = "OPNSense" ];
+            then
+                currentVersionOPN
+                #audit
+        fi
+        if [ "$osType" = "pfSense" ];
+            then
+                currentVersionpf
+                #audit
+        fi
+        
+        echo "osType=\"$osType\"" >> $systemInfo
+        echo "osVer=\"$osVer\"" >> $systemInfo
         wanIpCheck && echo "wanIp=\"$wanIp\"" >> $systemInfo
-        # echo "-------------------"
-        # importSystemInfo
+        # importEncryptionKey
+        openTcpTunnel $EncryptionKey
 fi
 #=============== Start of Condition Statements ===============
