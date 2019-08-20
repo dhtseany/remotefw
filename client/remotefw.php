@@ -15,6 +15,11 @@ pfSense_MODULE:	shell
 ##|-PRIV
 require_once("guiconfig.inc");
 
+if (file_exists("/var/remotefw/main.cfg")) {
+	$phonetext = file_get_contents("/var/siproxd/siproxd_registrations");
+	$phonedata = explode("\n", $phonetext);
+}
+
 require("head.inc");
 ?>
 
