@@ -84,6 +84,7 @@ remotefwInstall() {
     cp main.cfg $remotefwConfigDir/main.cfg
     cp remotefw $installDir/remotefw
     chmod +x $installDir/remotefw
+    cp services_remotefw.php /usr/local/www/services_remotefw.php
     echo "To start the adopt process type:"
     echo "# remotefw adopt"
     echo "See the Help section for more information:"
@@ -283,6 +284,20 @@ if [ $runCommand == "remove" ]
                 if [ "$runCondition" = "audit" ];
                     then
                         echo "[Remove] File: $remotefwConfigDir/main.cfg does not exist or could not be deleted."
+                fi
+        fi
+
+        if [ -f /usr/local/www/services_remotefw.php ]
+            then
+                rm /usr/local/www/services_remotefw.php
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Remove] File: /usr/local/www/services_remotefw.php was deleted."
+                fi
+            else
+                if [ "$runCondition" = "audit" ];
+                    then
+                        echo "[Remove] File: /usr/local/www/services_remotefw.php does not exist or could not be deleted."
                 fi
         fi
 
