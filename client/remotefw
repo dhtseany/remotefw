@@ -391,6 +391,7 @@ if [ $runCommand == "testconfig" ]
         importConfig
         echo "[agentVersion] $agentVersion"
         echo "[configVer] $configVer"
+        
         echo ""
         echo "Performing OS Check..."
         echo "===================="
@@ -400,7 +401,6 @@ if [ $runCommand == "testconfig" ]
         echo ""
         echo "Checking OS Version..."
         echo "===================="
-
         if [ "$osType" = "OPNSense" ];
             then
                 currentVersionOPN
@@ -409,12 +409,14 @@ if [ $runCommand == "testconfig" ]
             then
                 currentVersionpf
         fi
-        echo "[osVer] $osVer"
+        echo $osVer
+        
         echo ""
         echo "Detected Wan IP"
         echo "===================="
         wanIpCheck 
-        echo "[wanIp] $wanIp"
+        echo $wanIp
+
         echo ""
         echo "Detected Arch Type"
         echo "===================="
