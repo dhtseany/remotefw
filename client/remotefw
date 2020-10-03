@@ -225,7 +225,7 @@ cpuArchCheckpf() {
     testVarRc=$(sysctl -a | egrep -i 'hw.machine_arch')
     #echo "[Test] $testVarRc[@]"
     echo "[testVarRc] Start" 
-    echo $testVarRc[1]
+    echo $testVarRc
     echo "[testVarRc] End"
     # testVar=$(cut -d' ' -f2- $testVarRc)
     testVar=$(printf $testVarRc | sed 's/.* //')
