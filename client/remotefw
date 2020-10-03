@@ -384,23 +384,9 @@ fi
 
 # This switch is used to audit the check data 
 if [ $runCommand == "testconfig" ]
-    then  
-        echo ""
-        echo "app info:"
-        echo "===================="
+    then
         importConfig
-        echo "[agentVersion] $agentVersion"
-        echo "[configVer] $configVer"
-        
-        echo ""
-        echo "Performing OS Check..."
-        echo "===================="
         osTypeCheck
-        echo $osType
-        
-        echo ""
-        echo "Checking OS Version..."
-        echo "===================="
         if [ "$osType" = "OPNSense" ];
             then
                 currentVersionOPN
@@ -409,23 +395,40 @@ if [ $runCommand == "testconfig" ]
             then
                 currentVersionpf
         fi
-        echo $osVer
-        
-        echo ""
-        echo "Detected Wan IP"
-        echo "===================="
-        wanIpCheck 
-        echo $wanIp
-
-        echo ""
-        echo "Detected Arch Type"
-        echo "===================="
+        wanIpCheck
         if [ "$osType" = "pfSense" ];
             then
                 cpuArchCheckpf
         fi
-        echo $cpuArch
 
+        if [ "$runCondition" = "audit" ];
+            then
+                echo "app info:"
+                echo "===================="
+                echo "[agentVersion] $agentVersion"
+                echo "[configVer] $configVer"
+
+                echo ""
+                echo "Performing OS Check..."
+                echo "===================="
+                echo $osType
+                
+                echo ""
+                echo "Checking OS Version..."
+                echo "===================="
+                echo $osVer
+                
+                echo ""
+                echo "Detected Wan IP"
+                echo "===================="
+         
+                echo $wanIp
+
+                echo ""
+                echo "Detected Arch Type"
+                echo "===================="
+                echo $cpuArch
+        fi
         # echo "-------------------"
         # importSystemInfo
 fi
