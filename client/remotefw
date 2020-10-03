@@ -418,7 +418,12 @@ if [ $runCommand == "testconfig" ]
         echo ""
         echo "Detected Arch Type"
         echo "===================="
-        cpuArchCheckpf
+        if [ "$osType" = "pfSense" ];
+            then
+                cpuArchCheckpf
+        fi
+        echo $cpuArch
+
         # echo "-------------------"
         # importSystemInfo
 fi
