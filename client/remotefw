@@ -396,6 +396,11 @@ if [ $runCommand == "testconfig" ]
         echo "===================="
         osTypeCheck
         echo $osType
+        
+        echo ""
+        echo "Checking OS Version..."
+        echo "===================="
+
         if [ "$osType" = "OPNSense" ];
             then
                 currentVersionOPN
