@@ -228,7 +228,7 @@ cpuArchCheckpf() {
     echo $testVarRc[1]
     echo "[testVarRc] End"
     # testVar=$(cut -d' ' -f2- $testVarRc)
-    testVar=(sed -e 's/^\w*\ *//' $testVarRc)
+    testVar=$(printf $testVarRc | sed -e 's/^\w*\ *//')
     echo "[testVar] Start"
     echo $testVar
     echo "[testVar] End"
