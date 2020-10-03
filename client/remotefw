@@ -80,23 +80,41 @@ remotefwInstall() {
     echo "[$date] Installation Started."
     # exit 0
     # clear
+    if [ "$runCondition" = "audit" ];
+        then
+            echo "[Install] mkdir: $remotefwConfigDir"
+    fi
     mkdir -p $remotefwConfigDir
+    
+    if [ "$runCondition" = "audit" ];
+        then
+            echo "[Install] Copying File: main.cfg to $remotefwConfigDir/main.cfg"
+    fi
     cp main.cfg $remotefwConfigDir/main.cfg
+
+    if [ "$runCondition" = "audit" ];
+        then
+            echo "[Install] remotefw to $installDir"
+    fi
     cp remotefw $installDir/remotefw
+    
+    if [ "$runCondition" = "audit" ];
+        then
+            echo "[Install] Setting remotefw as executable: $installDir/remotefw"
+    fi
     chmod +x $installDir/remotefw
+    
+    if [ "$runCondition" = "audit" ];
+        then
+            echo "[Install] PHP Client Configuration Page"
+    fi
     cp services_remotefw.php /usr/local/www/services_remotefw.php
+    
     echo "To start the adopt process type:"
     echo "# remotefw adopt"
     echo "See the Help section for more information:"
     echo "# remotefw help"
     echo "[$date] Installation complete."
-    if [ "$runCondition" = "audit" ];
-        then
-            echo "[mkdir] $remotefwConfigDir"
-            echo "[Copying File] main.cfg to $remotefwConfigDir/main.cfg"
-            echo "[Copying File] remotefw to $installDir"
-            echo "[Setting remotefw as executable] $installDir/remotefw"
-    fi
     exit 0
 }
 
