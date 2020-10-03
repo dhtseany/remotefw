@@ -14,7 +14,7 @@ pfSense_MODULE:	shell
 ##|*IDENT=page-services-remotefw
 ##|*NAME=Status: remotefw central management agent
 ##|*DESCR=Allow access to the 'Status: remotefw management page' page.
-##|*MATCH=remotefw.php*
+##|*MATCH=services_remotefw.php*
 ##|-PRIV
 
 require_once("guiconfig.inc");
