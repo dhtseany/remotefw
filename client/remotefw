@@ -223,10 +223,11 @@ runStatusReport() {
 cpuArchCheckpf() {
     # Testing
     testVarRc=$(sysctl -a | egrep -i 'hw.machine')
-    echo "[Test] $testVarRc[@]"
+    #echo "[Test] $testVarRc[@]"
+    echo "[Test] $testVarRc[1]"
     # testVar=$(cut -d' ' -f2- $testVarRc)
     testVar=$(sed -e 's/^\w*\ *//' $testVarRc)
-    echo "[Test] $testVar"
+    #echo "[Test] $testVar"
 }
 
 importEncryptionKey() {
