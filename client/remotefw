@@ -225,7 +225,7 @@ cpuArchCheckpf() {
     cpuArch=$(sysctl -a | egrep -i 'hw.machine_arch' | sed 's/.* //')
     if [ "$runCondition" = "audit" ];
         then
-            echo "[Audit] testVarRc: $testVarRc" 
+            echo "[Audit] testVarRc: $cpuArch" 
     fi
     # testVar=$(echo $testVarRc | sed 's/.* //')
     # echo "[testVar] Start"
