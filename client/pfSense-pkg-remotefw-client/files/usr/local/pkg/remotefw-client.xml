@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<packagegui>
+  <name>remotefw-client</name>
+  <version>1.0</version>
+  <title></title>
+  <include_file></include_file>
+  <backup_file></backup_file>
+  <aftersaveredirect></aftersaveredirect>
+  <configpath></configpath>
+  <menu>
+    <name>remotefw</name>
+    <section>services</section>
+    <configfile></configfile>
+    <tooltiptext></tooltiptext>
+    <url>services_remotefw.php</url>
+  </menu>
+  <service>
+    <name></name>
+    <rcfile></rcfile>
+    <executable></executable>
+  </service>
+  <tabs>
+    <tab>
+      <text></text>
+      <url></url>
+      <active/>
+      <tab_level/>
+    </tab>
+  </tabs>
+  <additional_files_needed>
+    <prefix></prefix>
+    <chmod></chmod>
+    <item></item>
+  </additional_files_needed>
+  <adddeleteeditpagefields>
+    <columnitem>
+      <fielddescr></fielddescr>
+      <fieldname></fieldname>
+    </columnitem>
+  </adddeleteeditpagefields>
+  <fields>
+    <field>
+      <fielddescr></fielddescr>
+      <fieldname></fieldname>
+      <description></description>
+      <size></size>
+      <type></type>
+    </field>
+  </fields>
+  <custom_php_global_functions><!-- PHP function call --></custom_php_global_functions>
+  <custom_php_install_command><!-- PHP function call --></custom_php_install_command>
+  <custom_php_deinstall_command><!-- PHP function call --></custom_php_deinstall_command>
+  <custom_add_php_command><!-- PHP function call --></custom_add_php_command>
+  <custom_add_php_command_late><!-- PHP function call --></custom_add_php_command_late>
+  <custom_delete_php_command><!-- PHP function call --></custom_delete_php_command>
+  <custom_php_resync_config_command><!-- PHP function call --></custom_php_resync_config_command>
+  <start_command><!-- PHP function call --></start_command>
+  <process_kill_command><!-- PHP function call --></process_kill_command>
+</packagegui>

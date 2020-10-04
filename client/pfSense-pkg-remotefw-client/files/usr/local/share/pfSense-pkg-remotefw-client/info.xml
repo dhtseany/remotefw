@@ -1,0 +1,15 @@
+<package>
+    <name>someprogram</name>
+    <internal_name>someprogram</internal_name>
+    <pkginfolink>https://forum.netgate.com/</pkginfolink>
+    <descr><![CDATA[Some cool program]]></descr>
+    <website>http://www.example.org/someprogram</website>
+    <category>Services</category>
+    <version>0.99</version>
+    <status>Beta</status>
+    <required_version>2.2</required_version>
+    <config_file>https://packages.pfsense.org/packages/config/someprogram/someprogram.xml</config_file>
+    <maintainer>me@example.com</maintainer>
+    <configurationfile>someprogram.xml</configurationfile>
+    <only_for_archs>i386 amd64</only_for_archs>
+</package>
