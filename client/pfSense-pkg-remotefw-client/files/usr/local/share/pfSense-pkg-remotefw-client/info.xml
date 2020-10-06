@@ -2,8 +2,8 @@
     <name>someprogram</name>
     <internal_name>someprogram</internal_name>
     <pkginfolink>https://forum.netgate.com/</pkginfolink>
-    <descr><![CDATA[Some cool program]]></descr>
-    <website>http://www.example.org/someprogram</website>
+    <descr><![CDATA[Remote Management Agent for the RemoteFW Suite]]></descr>
+    <website>https://www.cmhsol.com/software</website>
     <category>Services</category>
     <version>0.99</version>
     <status>Beta</status>
