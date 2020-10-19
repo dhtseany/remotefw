@@ -18,7 +18,7 @@ $insert_query = "INSERT INTO testTable (`testVar`,`testVar2`) VALUES ('". mysqli
 If (mysqli_query($mysqli_link, $insert_query)) {
     echo 'Record inserted successfully.';
 }
-
+echo "[QUERY] $insert_query";
 echo "[Test] $testVar"; 
 ?>
 
