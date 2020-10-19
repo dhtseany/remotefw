@@ -1,4 +1,5 @@
 <?php
+require('config/database.php');
 $testVar = $_GET['test'];
 ?>
 
