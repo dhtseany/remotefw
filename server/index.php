@@ -13,11 +13,11 @@ $insert_query = "INSERT INTO testTable (`testVar`,`testVar2`) VALUES ('". mysqli
 <h1>RemoteFW :: Server console.</h1>
 
 <?php
-
 // run the insert query
 If (mysqli_query($mysqli_link, $insert_query)) {
-    echo 'Record inserted successfully.';
+    echo 'Record inserted successfully. <br/>';
 }
+
 echo "[QUERY] $insert_query"; ?><br /><?php
 echo "[Test] $testVar"; 
 ?>
