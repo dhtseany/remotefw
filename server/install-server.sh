@@ -33,8 +33,9 @@ if [ $runCommand = "install" ]
         cp ./index.php $InstallDir/index.php
         echo "[DIR] Creating $InstallDir/config"
         mkdir -p $InstallDir/config
-        echo "[PERM] Correcting file permissions"
         echo "[COPY] Installing /config/database.php to $InstallDir"
+        cp config/database.php $InstallDir/config/database.php
+        echo "[PERM] Correcting file permissions"
         chown -R $httpUser:$httpGroup $InstallDir
 fi
 
