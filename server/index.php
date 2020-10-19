@@ -1,5 +1,5 @@
 <?php
-testVar = $_GET['test'];
+$testVar = $_GET['test'];
 ?>
 
 <html>
