@@ -31,7 +31,10 @@ if [ $runCommand = "install" ]
         echo "[NOTICE] User invoked Installation script."
         echo "[COPY] Installing /index.php to $InstallDir"
         cp ./index.php $InstallDir/index.php
+        echo "[DIR] Creating $InstallDir/config"
+        mkdir -p $InstallDir/config
         echo "[PERM] Correcting file permissions"
+        echo "[COPY] Installing /config/database.php to $InstallDir"
         chown -R $httpUser:$httpGroup $InstallDir
 fi
 
@@ -40,4 +43,6 @@ if [ $runCommand = "remove" ]
         echo "[NOTICE] User invoked removal script."
         echo "[DEL] Removing /index.php from $InstallDir"
         rm $InstallDir/index.php
+        echo "[DEL] Removing config folder"
+        rm -rf $InstallDir/config
 fi
