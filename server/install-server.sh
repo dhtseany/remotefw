@@ -6,6 +6,8 @@ DOW=$(date +%u)
 WEEK=$(date +%V)
 MONTH=$(date +"%m")
 YEAR=$(date +"%y")
+httpUser=http
+httpGroup=http
 runCommand=$1
 runOption=$2
 
@@ -24,10 +26,16 @@ fi
 
 if [ $runCommand = "install" ]
 	then
+        echo "[NOTICE] User invoked Installation script."
+        echo "[COPY] Installing /index.php to $InstallDir"
         cp ./index.php $InstallDir/index.php
+        echo "[PERM] Correcting file permissions"
+        chown -R $httpUser:$httpGroup $InstallDir
 fi
 
 if [ $runCommand = "remove" ]
 	then
+        echo "[NOTICE] User invoked removal script."
+        echo "[DEL] Removing /index.php from $InstallDir"
         rm $InstallDir/index.php
 fi
