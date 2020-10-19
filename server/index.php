@@ -9,7 +9,7 @@ $testVar = $_GET['test'];
 <body>
 <h1>RemoteFW :: Server console.</h1>
 <?php
-echo "[Test]" $testVar; 
+echo "[Test] $testVar"; 
 ?>
 </body>
 </html>
