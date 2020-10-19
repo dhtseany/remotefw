@@ -31,8 +31,6 @@ if (isset($testVar)) {
 <?php
 if (isset($testVar)) {
     echo "[Test] $testVar";
-else
-    echo "[TEST] testVar is not set!";
 }
 ?>
 
