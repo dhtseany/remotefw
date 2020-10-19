@@ -22,8 +22,18 @@ if (isset($testVar)) {
         echo 'Record inserted successfully. <br/>';
     }
 }
-echo "[QUERY] $insert_query"; ?><br /><?php
-echo "[Test] $testVar"; 
+if (isset($testVar)) {
+    echo "[QUERY] $insert_query";
+}
+
+?>
+<br />
+<?php
+if (isset($testVar)) {
+    echo "[Test] $testVar";
+else
+    echo "[TEST] testVar is not set!"
+}
 ?>
 
 </body>
