@@ -4,8 +4,6 @@
 </head>
 <body>
 <h1>RemoteFW :: Server console.</h1>
-<?php
-echo "[Test]" $_GET['test'];
-?>
+
 </body>
 </html>
