@@ -32,7 +32,7 @@ if (isset($testVar)) {
 if (isset($testVar)) {
     echo "[Test] $testVar";
 else
-    echo "[TEST] testVar is not set!"
+    echo "[TEST] testVar is not set!";
 }
 ?>
 
