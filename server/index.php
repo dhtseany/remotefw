@@ -2,7 +2,7 @@
 require('config/database.php');
 $testVar = $_GET['test'];
 $testVar2 = "static_garbage";
-$insert_query = "INSERT INTO testTable (`testVar`,`testVar2`) VALUES ('". mysqli_real_escape_string($mysqli_link, '$testVar') ."','". mysqli_real_escape_string($mysqli_link, '$testVar2') ."')";
+$insert_query = "INSERT INTO testTable (`testVar`,`testVar2`) VALUES ('". mysqli_real_escape_string($mysqli_link, 'testVarStatic') ."','". mysqli_real_escape_string($mysqli_link, 'testVar2Static') ."')";
 ?>
 
 <html>
@@ -18,7 +18,7 @@ $insert_query = "INSERT INTO testTable (`testVar`,`testVar2`) VALUES ('". mysqli
 If (mysqli_query($mysqli_link, $insert_query)) {
     echo 'Record inserted successfully.';
 }
-echo "[QUERY] $insert_query";
+echo "[QUERY] $insert_query"; ?><br /><?php
 echo "[Test] $testVar"; 
 ?>
 
