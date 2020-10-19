@@ -14,6 +14,8 @@ runOption=$2
 # Misc Variables
 InstallDir=/srv/http
 
+clear
+
 # Command input checks
 if [ -z $runCommand ]
 	then
