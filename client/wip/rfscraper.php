@@ -32,8 +32,6 @@ if (file_exists("/usr/local/sbin/opnsense-version"))
         }
 
 if ($scriptAudit = "yes");
-{
-    echo "[osType] $osType"
-}
+{echo "[osType] $osType";}
 
 ?>
