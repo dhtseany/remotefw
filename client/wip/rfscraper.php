@@ -38,10 +38,10 @@ $wanIp = shell_exec("curl -s http://whatismyip.akamai.com/");
 // Audit Checks
 if ($scriptAudit = "yes");
     {
-    echo "[Audit][cpuArch] " . $cpuArch;
-    echo "[Audit][osType] " . $osType;
-    echo "[Audit][osVersion] " . $osVersion;
-    echo "[Audit][wanIP] " . $wanIp;
+    echo "[Audit][cpuArch] " . $cpuArch . "n\";
+    echo "[Audit][osType] " . $osType . "n\";
+    echo "[Audit][osVersion] " . $osVersion . "n\";
+    echo "[Audit][wanIP] " . $wanIp . "n\";
     }
 
 ?>
