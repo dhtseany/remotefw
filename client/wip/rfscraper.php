@@ -23,7 +23,7 @@ if (file_exists("/usr/local/sbin/opnsense-version"))
     {
         if ($scriptAudit = "yes");
             {echo "[Y] /usr/local/sbin/opnsense-version";}
-        $osType = shell_exec('cat /usr/local/sbin/opnsense-version');
+        $osType = shell_exec('/usr/local/sbin/opnsense-version');
     }
     else
         {    
