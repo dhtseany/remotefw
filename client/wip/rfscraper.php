@@ -31,11 +31,18 @@ if (file_exists("/usr/local/sbin/opnsense-version"))
                 {echo "[Audit][N] /usr/local/sbin/opnsense-version \n";}
         }
 
+if ($osType = "pfSense");
+    {
+        $osVersion = shell_exec('cat /etc/version');
+    }
+
 // Audit Checks
 if ($scriptAudit = "yes");
-{echo "[Audit][cpuArch] " . $cpuArch . "\n";
+{
+echo "[Audit][cpuArch] " . $cpuArch . "\n";
 echo "[Audit][osType] " . $osType . "\n";
 echo "[Audit][osVersion] " . $osVersion . "\n";
-echo "[Audit][wanIP] " . $wanIp . "\n";}
+echo "[Audit][wanIP] " . $wanIp . "\n";
+}
 
 ?>
