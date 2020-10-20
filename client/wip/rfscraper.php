@@ -28,7 +28,7 @@ if (file_exists("/usr/local/sbin/opnsense-version"))
     else
         {    
             if ($scriptAudit = "yes");
-                {echo "[N] /usr/local/sbin/opnsense-version";}
+                {echo "[N] /usr/local/sbin/opnsense-version \n";}
         }
 // Audit Checks
 if ($scriptAudit = "yes");
