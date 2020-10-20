@@ -1,9 +1,7 @@
 <?php
 $scriptAudit = "yes";
 
-$cpuArch = shell_exec("sysctl -a | egrep -i 'hw.machine_arch' | sed 's/.* //'");
-$wanIp = shell_exec("curl -s http://whatismyip.akamai.com/");
-
+// Initial OS Identitfication Checks
 if (file_exists("/etc/platform"))
     {
         // Yes, this is a pfSense system
@@ -33,6 +31,9 @@ if (file_exists("/usr/local/sbin/opnsense-version"))
             if ($scriptAudit = "yes");
                 {echo "[Audit][N] /usr/local/sbin/opnsense-version \n";}
         }
+
+$cpuArch = shell_exec("sysctl -a | egrep -i 'hw.machine_arch' | sed 's/.* //'");
+$wanIp = shell_exec("curl -s http://whatismyip.akamai.com/");
 
 // Audit Checks
 if ($scriptAudit = "yes");
