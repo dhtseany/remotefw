@@ -6,9 +6,11 @@ $wanIp = shell_exec("curl -s http://whatismyip.akamai.com/");
 
 if (file_exists("/etc/platform"))
     {
+        // Yes, this is a pfSense system
         if ($scriptAudit = "yes");
             {echo "[Audit][Y] /etc/platform \n";}
         $osType = shell_exec('cat /etc/platform');
+        $osVersion = shell_exec('cat /etc/version');
     } 
     else
         {    
@@ -18,6 +20,7 @@ if (file_exists("/etc/platform"))
 
 if (file_exists("/usr/local/sbin/opnsense-version"))
     {
+        // Yes, this is an OPNSense system
         if ($scriptAudit = "yes");
             {echo "[Audit][Y] /usr/local/sbin/opnsense-version \n";}
         $osTypeOPNFull = shell_exec('/usr/local/sbin/opnsense-version');
@@ -30,11 +33,6 @@ if (file_exists("/usr/local/sbin/opnsense-version"))
             if ($scriptAudit = "yes");
                 {echo "[Audit][N] /usr/local/sbin/opnsense-version \n";}
         }
-
-// if ($osType = "pfSense");
-//     {
-//         $osVersion = shell_exec('cat /etc/version');
-//     }
 
 // Audit Checks
 if ($scriptAudit = "yes");
