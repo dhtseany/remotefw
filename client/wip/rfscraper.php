@@ -4,8 +4,6 @@ $scriptAudit = "yes";
 $cpuArch = shell_exec("sysctl -a | egrep -i 'hw.machine_arch' | sed 's/.* //'");
 $wanIp = shell_exec("curl -s http://whatismyip.akamai.com/");
 
-echo "[Audit][ARCH] $cpuArch";
-
 if (file_exists("/etc/platform"))
     {
         if ($scriptAudit = "yes");
@@ -35,7 +33,8 @@ if (file_exists("/usr/local/sbin/opnsense-version"))
 
 // Audit Checks
 if ($scriptAudit = "yes");
-{echo "[Audit][osType] $osType \n";
+{echo "[Audit][cpuArch] " . $cpuArch . "\n";
+echo "[Audit][osType] " . $osType . "\n";
 echo "[Audit][osVersion] " . $osVersion . "\n";
 echo "[Audit][wanIP] " . $wanIp . "\n";}
 
