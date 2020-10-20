@@ -36,6 +36,7 @@ if (file_exists("/usr/local/sbin/opnsense-version"))
 // Audit Checks
 if ($scriptAudit = "yes");
 {echo "[Audit][osType] $osType \n";
-echo "[Audit][osVersion] " . $osVersion . "\n";}
+echo "[Audit][osVersion] " . $osVersion . "\n";
+echo "[Audit][wanIP] " . $wanIp . "\n";}
 
 ?>
