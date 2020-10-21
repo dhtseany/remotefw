@@ -11,13 +11,10 @@ if (isset($testVar)) {
     $insert_query = "INSERT INTO testTable (`testVar`,`testVar2`) VALUES ('". mysqli_real_escape_string($mysqli_link, $testVar) ."','". mysqli_real_escape_string($mysqli_link, $testVar2) ."')";
   }
 
-
 include('resources/structure/head.php');
 include('resources/structure/navbar.php');
 include('resources/structure/contenthead.php');
 ?>
-
-
 
     <!-- Main content -->
     <div class="content">
@@ -99,8 +96,6 @@ include('resources/structure/contenthead.php');
           </div>
           <!-- /.col -->
         </div>
-
-      
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
