@@ -202,7 +202,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="index.php" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                System
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -210,7 +210,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="nav-item">
                 <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -219,9 +219,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>Clients</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="settings.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Settings</p>
+                </a>
+              </li>
             </ul>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -229,7 +235,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
