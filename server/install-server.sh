@@ -36,7 +36,7 @@ if [ $runCommand = "install" ]
         echo "[COPY] Installing /config/database.php to $InstallDir"
         cp config/database.php $InstallDir/config/database.php
         echo "[COPY] Installing /clients.php to $InstallDir"
-        cp database.php $InstallDir/database.php
+        cp clients.php $InstallDir/clients.php
         #echo "[COPY] Installing /demogui to $InstallDir/demogui"
         #cp -R demogui/ $InstallDir/demogui
         echo "[COPY] Installing /resources to $InstallDir/resources"
