@@ -35,8 +35,10 @@ if [ $runCommand = "install" ]
         mkdir -p $InstallDir/config
         echo "[COPY] Installing /config/database.php to $InstallDir"
         cp config/database.php $InstallDir/config/database.php
-        echo "[COPY] Installing /demogui to $InstallDir/demogui"
-        cp -R demogui/ $InstallDir/demogui
+        echo "[COPY] Installing /clients.php to $InstallDir"
+        cp database.php $InstallDir/database.php
+        #echo "[COPY] Installing /demogui to $InstallDir/demogui"
+        #cp -R demogui/ $InstallDir/demogui
         echo "[COPY] Installing /resources to $InstallDir/resources"
         cp -R resources/ $InstallDir/resources
         echo "[PERM] Correcting file permissions"
@@ -50,8 +52,8 @@ if [ $runCommand = "remove" ]
         rm $InstallDir/index.php
         echo "[DEL] Removing config folder"
         rm -rf $InstallDir/config
-        echo "[DEL] Removing demogui folder"
-        rm -rf $InstallDir/demogui
+        #echo "[DEL] Removing demogui folder"
+        #rm -rf $InstallDir/demogui
         echo "[DEL] Removing resources folder"
         rm -rf $InstallDir/resources
 
