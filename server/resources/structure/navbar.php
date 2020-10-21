@@ -176,19 +176,19 @@ function navBarDisplay() {
               </a>
               <ul class="nav nav-treeview">
               <li class="nav-item">
-                  <a href="index.php" class="nav-link active">
+                  <a href="index.php" class="nav-link'. if ($pageTitle = "index") {echo " active";} .'">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Dashboard</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="clients.php" class="nav-link">
+                  <a href="clients.php" class="nav-link'. if ($pageTitle = "clients") {echo " active";} .'">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Clients</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="settings.php" class="nav-link">
+                  <a href="settings.php" class="nav-link'. if ($pageTitle = "settings") {echo " active";} .'">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Settings</p>
                   </a>
