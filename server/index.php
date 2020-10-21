@@ -13,6 +13,7 @@ if (isset($testVar)) {
 
 include('resources/structure/head.php');
 include('resources/structure/navbar.php');
+navBarDisplay();
 include('resources/structure/contenthead.php');
 ?>
 
