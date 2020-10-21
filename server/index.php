@@ -1,6 +1,10 @@
 <?php
 require('config/database.php');
-$testVar = $_GET['test'];
+
+if (isset($_GET['test'])) {
+    $testVar = $_GET['test'];
+    }
+
 $testVar2 = "static_garbage";
 
 if (isset($testVar)) {
