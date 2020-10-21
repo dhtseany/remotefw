@@ -1,4 +1,5 @@
 <?php
+$pageTitle="index";
 require('config/database.php');
 
 if (isset($_GET['test'])) {
