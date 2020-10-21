@@ -37,6 +37,8 @@ if [ $runCommand = "install" ]
         cp config/database.php $InstallDir/config/database.php
         echo "[COPY] Installing /demogui to $InstallDir/demogui"
         cp -R demogui/ $InstallDir/demogui
+        echo "[COPY] Installing /resources to $InstallDir/resources"
+        cp -R resources/ $InstallDir/resources
         echo "[PERM] Correcting file permissions"
         chown -R $httpUser:$httpGroup $InstallDir
 fi
@@ -50,4 +52,7 @@ if [ $runCommand = "remove" ]
         rm -rf $InstallDir/config
         echo "[DEL] Removing demogui folder"
         rm -rf $InstallDir/demogui
+        echo "[DEL] Removing resources folder"
+        rm -rf $InstallDir/resources
+
 fi
