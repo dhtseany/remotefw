@@ -204,6 +204,7 @@ function navBarDisplay() {
                 </p>
               </a>
             </li> -->
+            [pageTitle]'. $pageTitle .'
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
