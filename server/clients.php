@@ -7,6 +7,11 @@ include('resources/structure/navbar.php');
 include('resources/structure/contenthead.php');
 navBarDisplay($pageName);
 displayContentHead($pageName, $pageTitle);
+
+// MySQL query of the clients table
+$select_query = "SELECT * FROM clients LIMIT 10";
+$result = mysqli_query($mysqli_link, $select_query);
+
 ?>
 
 <!-- Main content -->
@@ -29,32 +34,34 @@ displayContentHead($pageName, $pageTitle);
             <div class="card-body p-0">
               <table class="table">
                 <thead>
-                  <tr>
-                    <th style="width: 5%">cid</th>
-                    <th style="width: 20%">customer</th>
-                    <th style="width: 12.5%">location</th>
-                    <th style="width: 12.5%">osType</th>
-                    <th style="width: 12.5%">osArch</th>
-                    <th style="width: 12.5%">osVer</th>
-                    <th style="width: 12.5%">cpuCores</th>
-                    <th style="width: 12.5%">lastCheckInTime</th>
-                  </tr>
+                      <tr>
+                        <th style="width: 5%">cid</th>
+                        <th style="width: 20%">customer</th>
+                        <th style="width: 12.5%">location</th>
+                        <th style="width: 12.5%">osType</th>
+                        <th style="width: 12.5%">osArch</th>
+                        <th style="width: 12.5%">osVer</th>
+                        <th style="width: 12.5%">cpuCores</th>
+                        <th style="width: 12.5%">lastCheckInTime</th>
+                      </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1.</td>
-                    <td>Update software</td>
-                    <td>
-                      <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                      </div>
-                    </td>
-                    <td><span class="badge bg-danger">55%</span></td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                  </tr>
+                <?php
+                  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    echo '
+                      <tr>
+                        <td>'. $row["cid"] .'</td>
+                        <td>'. $row["custID"] .'</td>
+                        <td>'. $row["location"] .'</td>
+                        <td>'. $row["osType"] .'</td>
+                        <td>'. $row["osArch"] .'</td>
+                        <td>'. $row["osVer"] .'</td>
+                        <td>'. $row["cpuCores"] .'</td>
+                        <td>'. $row["lastCheckInTime"] .'</td>
+                      </tr>
+                    ';
+                  }
+                  ?>  
                 </tbody>
               </table>
             </div>
