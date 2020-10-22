@@ -15,7 +15,7 @@ if (isset($testVar)) {
 
 include('resources/structure/head.php');
 include('resources/structure/navbar.php');
-navBarDisplay($pageTitle);
+navBarDisplay($pageName, $pageTitle);
 displayContentHead($pageName, $pageTitle);
 ?>
 
