@@ -1,6 +1,8 @@
 <?php
+
 $pageName="clients";
 $pageTitle="Clients";
+
 require('config/database.php');
 include('resources/structure/head.php');
 include('resources/structure/navbar.php');
