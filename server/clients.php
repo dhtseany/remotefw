@@ -21,8 +21,6 @@ displayContentHead($pageName, $pageTitle);
                   <ul class="pagination pagination-sm float-right">
                     <li class="page-item"><a class="page-link" href="#">«</a></li>
                     <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
                     <li class="page-item"><a class="page-link" href="#">»</a></li>
                   </ul>
                 </div>
@@ -32,8 +30,8 @@ displayContentHead($pageName, $pageTitle);
                 <table class="table">
                   <thead>
                     <tr>
-                      <th style="width: 12.5%">cid</th>
-                      <th style="width: 12.5%">customer</th>
+                      <th style="width: 5%">cid</th>
+                      <th style="width: 20%">customer</th>
                       <th style="width: 12.5%">location</th>
                       <th style="width: 12.5%">osType</th>
                       <th style="width: 12.5%">osArch</th>
