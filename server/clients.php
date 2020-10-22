@@ -50,6 +50,7 @@ $result = mysqli_query($mysqli_link, $select_query);
                 <tbody>
                 <?php
                   while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    $lastCheckIn = time_elapsed_string($row["lastCheckInTime"]);
                     echo '
                       <tr>
                         <td>'. $row["cid"] .'</td>
@@ -59,7 +60,7 @@ $result = mysqli_query($mysqli_link, $select_query);
                         <td>'. $row["osArch"] .'</td>
                         <td>'. $row["osVer"] .'</td>
                         <td>'. $row["cpuCores"] .'</td>
-                        <td>'. time_elapsed_string($row["lastCheckInTime"]) .'</td>
+                        <td>'. $lastCheckIn .'</td>
                       </tr>
                     ';
                   }
