@@ -50,6 +50,8 @@ if [ $runCommand = "remove" ]
         echo "[NOTICE] User invoked removal script."
         echo "[DEL] Removing /index.php from $InstallDir"
         rm $InstallDir/index.php
+        echo "[DEL] Removing /clients.php from $InstallDir"
+        rm $InstallDir/clients.php
         echo "[DEL] Removing config folder"
         rm -rf $InstallDir/config
         #echo "[DEL] Removing demogui folder"

@@ -16,8 +16,7 @@ displayContentHead($pageName, $pageTitle);
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Simple Full Width Table</h3>
-
+                <h3 class="card-title">Active Client Devices</h3>
                 <div class="card-tools">
                   <ul class="pagination pagination-sm float-right">
                     <li class="page-item"><a class="page-link" href="#">«</a></li>
@@ -33,10 +32,14 @@ displayContentHead($pageName, $pageTitle);
                 <table class="table">
                   <thead>
                     <tr>
-                      <th style="width: 5%">#</th>
-                      <th style="width: 25%">Task</th>
-                      <th style="width: 60%">Progress</th>
-                      <th style="width: 10%">Label</th>
+                      <th style="width: 12.5%">cid</th>
+                      <th style="width: 12.5%">customer</th>
+                      <th style="width: 12.5%">location</th>
+                      <th style="width: 12.5%">osType</th>
+                      <th style="width: 12.5%">osArch</th>
+                      <th style="width: 12.5%">osVer</th>
+                      <th style="width: 12.5%">cpuCores</th>
+                      <th style="width: 12.5%">lastCheckInTime</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -49,6 +52,10 @@ displayContentHead($pageName, $pageTitle);
                         </div>
                       </td>
                       <td><span class="badge bg-danger">55%</span></td>
+                      <td>#</td>
+                      <td>#</td>
+                      <td>#</td>
+                      <td>#</td>
                     </tr>
                     <tr>
                       <td>2.</td>
@@ -59,6 +66,10 @@ displayContentHead($pageName, $pageTitle);
                         </div>
                       </td>
                       <td><span class="badge bg-warning">70%</span></td>
+                      <td>#</td>
+                      <td>#</td>
+                      <td>#</td>
+                      <td>#</td>
                     </tr>
                     <tr>
                       <td>3.</td>
@@ -69,6 +80,10 @@ displayContentHead($pageName, $pageTitle);
                         </div>
                       </td>
                       <td><span class="badge bg-primary">30%</span></td>
+                      <td>#</td>
+                      <td>#</td>
+                      <td>#</td>
+                      <td>#</td>
                     </tr>
                     <tr>
                       <td>4.</td>
@@ -79,6 +94,10 @@ displayContentHead($pageName, $pageTitle);
                         </div>
                       </td>
                       <td><span class="badge bg-success">90%</span></td>
+                      <td>#</td>
+                      <td>#</td>
+                      <td>#</td>
+                      <td>#</td>
                     </tr>
                   </tbody>
                 </table>
