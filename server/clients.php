@@ -59,7 +59,7 @@ $result = mysqli_query($mysqli_link, $select_query);
                         <td>'. $row["osArch"] .'</td>
                         <td>'. $row["osVer"] .'</td>
                         <td>'. $row["cpuCores"] .'</td>
-                        <td>'. $row["lastCheckInTime"] .'</td>
+                        <td>'. time_elapsed_string($row["lastCheckInTime"]) .'</td>
                       </tr>
                     ';
                   }
