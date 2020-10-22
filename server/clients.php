@@ -33,10 +33,10 @@ displayContentHead($pageName, $pageTitle);
                 <table class="table">
                   <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
+                      <th style="width: 25%">#</th>
                       <th>Task</th>
                       <th>Progress</th>
-                      <th style="width: 40px">Label</th>
+                      <th style="width: 75%">Label</th>
                     </tr>
                   </thead>
                   <tbody>
