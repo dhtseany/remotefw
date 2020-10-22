@@ -15,8 +15,27 @@ if (isset($testVar)) {
 include('resources/structure/head.php');
 include('resources/structure/navbar.php');
 navBarDisplay($pageTitle);
-include('resources/structure/contenthead.php');
+// include('resources/structure/contenthead.php');
 ?>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Starter Page</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">[pageTitle] <?php echo $pageTitle;?></li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
     <!-- Main content -->
     <div class="content">
@@ -25,7 +44,7 @@ include('resources/structure/contenthead.php');
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">[pageTitle] <?php echo $pageTitle;?></h3>
+                            <h3 class="card-title">Table title</h3>
                             <div class="card-tools">
                                 <ul class="pagination pagination-sm float-right">
                                     <li class="page-item"><a class="page-link" href="#">«</a></li>
