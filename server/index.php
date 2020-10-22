@@ -1,5 +1,6 @@
 <?php
-$pageTitle="index";
+$pageName="index";
+$pageTitle="Dashboard";
 require('config/database.php');
 
 if (isset($_GET['test'])) {
@@ -14,7 +15,7 @@ if (isset($testVar)) {
 
 include('resources/structure/head.php');
 include('resources/structure/navbar.php');
-navBarDisplay($pageTitle);
+navBarDisplay($pageTitle, $pageTitle);
 // include('resources/structure/contenthead.php');
 ?>
   <!-- Content Wrapper. Contains page content -->
@@ -28,8 +29,8 @@ navBarDisplay($pageTitle);
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">[pageTitle] <?php echo $pageTitle;?></li>
+              <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+              <li class="breadcrumb-item active"><?php echo $pageName;?></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

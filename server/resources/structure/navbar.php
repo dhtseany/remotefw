@@ -1,6 +1,6 @@
 <?php
 
-function navBarDisplay($pageTitle) {
+function navBarDisplay($pageName, $pageTitle) {
   echo '
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -207,7 +207,7 @@ function navBarDisplay($pageTitle) {
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
-        [pageTitle]'. $pageTitle .'
+        [pageName]'. $pageName .'
       </div>
       <!-- /.sidebar -->
     </aside>
