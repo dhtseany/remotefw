@@ -87,17 +87,19 @@ $result = mysqli_query($mysqli_link, $select_query);
                         <td>'. $row["cpuCores"] .'</td>
                         <td>'. time_elapsed_string($row["lastCheckInTime"]) .'</td>
                         <td>
-                          <button type="button" class="btn btn-danger">System</button>
-                          <button type="button" class="btn btn-danger dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropdown</span>
-                            <div class="dropdown-menu" role="menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-1px, 37px, 0px);">
-                              <a class="dropdown-item" href="#">Action</a>
-                              <a class="dropdown-item" href="#">Another action</a>
-                              <a class="dropdown-item" href="#">Something else here</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">Separated link</a>
-                            </div>
-                          </button>
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-danger">System</button>
+                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                              <span class="sr-only">Toggle Dropdown</span>
+                              <div class="dropdown-menu" role="menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-1px, 37px, 0px);">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                              </div>
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ';
