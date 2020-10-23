@@ -45,6 +45,7 @@ $result = mysqli_query($mysqli_link, $select_query);
                         <th style="width: 12.5%">osVer</th>
                         <th style="width: 12.5%">cpuCores</th>
                         <th style="width: 12.5%">lastCheckInTime</th>
+                        <th style="width: 12.5%">Actions</th>
                       </tr>
                 </thead>
                 <tbody>
@@ -85,6 +86,7 @@ $result = mysqli_query($mysqli_link, $select_query);
                         <td>'. $row["osVer"] .'</td>
                         <td>'. $row["cpuCores"] .'</td>
                         <td>'. time_elapsed_string($row["lastCheckInTime"]) .'</td>
+                        <td><button type="button" class="btn btn-danger">System</button></td>
                       </tr>
                     ';
                   }
