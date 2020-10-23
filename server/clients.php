@@ -42,10 +42,10 @@ $result = mysqli_query($mysqli_link, $select_query);
                         <th style="width: 12.5%">location</th>
                         <th style="width: 12.5%">osType</th>
                         <th style="width: 12.5%">osArch</th>
-                        <th style="width: 12.5%">osVer</th>
-                        <th style="width: 12.5%">cpuCores</th>
-                        <th style="width: 12.5%">lastCheckInTime</th>
-                        <th style="width: 12.5%">Actions</th>
+                        <th style="width: 7%">osVer</th>
+                        <th style="width: 5.5%">cpuCores</th>
+                        <th style="width: 5%">lastCheckInTime</th>
+                        <th style="width: 20%">Actions</th>
                       </tr>
                 </thead>
                 <tbody>
