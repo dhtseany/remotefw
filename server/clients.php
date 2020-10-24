@@ -81,7 +81,7 @@ $resultClients = mysqli_query($mysqli_link, $selectClients);
                     echo '
                       <tr>
                         <td>'. $clientsRow["cid"] .'</td>
-                        <td>'; displayCustomerName($custID); echo '</td>
+                        <td>'; displayCustomerName($custID, $mysqli_link); echo '</td>
                         <td>'. $clientsRow["location"] .'</td>
                         <td>'. $clientsRow["osType"] .'</td>
                         <td>'. $clientsRow["osArch"] .'</td>
