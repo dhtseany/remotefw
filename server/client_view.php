@@ -1,7 +1,7 @@
 <?php
 
-if (isset($_GET['$cid'])) {
-    $cid = $_GET['$cid'];
+if (isset($_GET['cid'])) {
+    $cid = $_GET['cid'];
 }
 
 $pageName="client_view";
@@ -19,7 +19,7 @@ displayContentHead($pageName, $pageTitle);
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    [cid] <?php echo $cid; ?>
+                    [cid] <?php if (isset($cid)) {echo $cid;} ?>
                 </div>
                 <!-- /.col -->
             </div>
