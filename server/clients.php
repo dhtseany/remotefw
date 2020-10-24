@@ -11,8 +11,8 @@ navBarDisplay($pageName);
 displayContentHead($pageName, $pageTitle);
 
 // MySQL query of the clients table
-$select_query = "SELECT * FROM clients LIMIT 10";
-$result = mysqli_query($mysqli_link, $select_query);
+$selectClients = "SELECT * FROM clients LIMIT 10";
+$resultClients = mysqli_query($mysqli_link, $selectClients);
 
 ?>
 
@@ -50,7 +50,7 @@ $result = mysqli_query($mysqli_link, $select_query);
                 </thead>
                 <tbody>
                 <?php
-                  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                  while ($clientsRow = mysqli_fetch_array($resultClients, MYSQLI_ASSOC)) {
                     function time_elapsed_string($datetime, $full = false) {
                       $now = new DateTime;
                       $ago = new DateTime($datetime);
@@ -78,14 +78,14 @@ $result = mysqli_query($mysqli_link, $select_query);
                   }
                     echo '
                       <tr>
-                        <td>'. $row["cid"] .'</td>
-                        <td>'. $row["custID"] .'</td>
-                        <td>'. $row["location"] .'</td>
-                        <td>'. $row["osType"] .'</td>
-                        <td>'. $row["osArch"] .'</td>
-                        <td>'. $row["osVer"] .'</td>
-                        <td>'. $row["cpuCores"] .'</td>
-                        <td>'. time_elapsed_string($row["lastCheckInTime"]) .'</td>
+                        <td>'. $clientsRow["cid"] .'</td>
+                        <td>'. $clientsRow["custID"] .'</td>
+                        <td>'. $clientsRow["location"] .'</td>
+                        <td>'. $clientsRow["osType"] .'</td>
+                        <td>'. $clientsRow["osArch"] .'</td>
+                        <td>'. $clientsRow["osVer"] .'</td>
+                        <td>'. $clientsRow["cpuCores"] .'</td>
+                        <td>'. time_elapsed_string($clientsRow["lastCheckInTime"]) .'</td>
                         <td>
                           <div class="btn-group">
                             <button type="button" class="btn btn-danger">System</button>
