@@ -39,6 +39,8 @@ if [ $runCommand = "install" ]
         cp clients.php $InstallDir/clients.php
         echo "[COPY] Installing /settings.php to $InstallDir"
         cp settings.php $InstallDir/settings.php
+        echo "[COPY] Installing /client_view.php to $InstallDir"
+        cp client_view.php $InstallDir/client_view.php
         echo "[COPY] Installing /resources to $InstallDir/resources"
         cp -R resources/ $InstallDir/resources
         echo "[PERM] Correcting file permissions"
@@ -52,6 +54,8 @@ if [ $runCommand = "remove" ]
         rm $InstallDir/index.php
         echo "[DEL] Removing /clients.php from $InstallDir"
         rm $InstallDir/clients.php
+        echo "[DEL] Removing /client_view.php from $InstallDir"
+        rm $InstallDir/client_view.php
         echo "[DEL] Removing /settings.php from $InstallDir"
         rm $InstallDir/settings.php
         echo "[DEL] Removing config folder"
