@@ -6,7 +6,9 @@ if (isset($_GET['cid'])) {
 
 $pageName="client_view";
 $pageTitle="Client Overview";
+
 require('config/database.php');
+include('resources/functions/shared_functions.php');
 include('resources/structure/head.php');
 include('resources/structure/navbar.php');
 include('resources/structure/contenthead.php');
@@ -46,7 +48,7 @@ displayContentHead($pageName, $pageTitle);
                                             <td>Call of Duty IV</td>
                                             <td><span class="label label-success">Shipped</span></td>
                                             <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -54,7 +56,7 @@ displayContentHead($pageName, $pageTitle);
                                             <td>Samsung Smart TV</td>
                                             <td><span class="label label-warning">Pending</span></td>
                                             <td>
-                                            <div class="sparkbar" data-color="#f39c12" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                <div class="sparkbar" data-color="#f39c12" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -62,7 +64,7 @@ displayContentHead($pageName, $pageTitle);
                                             <td>iPhone 6 Plus</td>
                                             <td><span class="label label-danger">Delivered</span></td>
                                             <td>
-                                            <div class="sparkbar" data-color="#f56954" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                <div class="sparkbar" data-color="#f56954" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -70,7 +72,7 @@ displayContentHead($pageName, $pageTitle);
                                             <td>Samsung Smart TV</td>
                                             <td><span class="label label-info">Processing</span></td>
                                             <td>
-                                            <div class="sparkbar" data-color="#00c0ef" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                <div class="sparkbar" data-color="#00c0ef" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -78,7 +80,7 @@ displayContentHead($pageName, $pageTitle);
                                             <td>Samsung Smart TV</td>
                                             <td><span class="label label-warning">Pending</span></td>
                                             <td>
-                                            <div class="sparkbar" data-color="#f39c12" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                <div class="sparkbar" data-color="#f39c12" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -86,7 +88,7 @@ displayContentHead($pageName, $pageTitle);
                                             <td>iPhone 6 Plus</td>
                                             <td><span class="label label-danger">Delivered</span></td>
                                             <td>
-                                            <div class="sparkbar" data-color="#f56954" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                <div class="sparkbar" data-color="#f56954" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -94,7 +96,7 @@ displayContentHead($pageName, $pageTitle);
                                             <td>Call of Duty IV</td>
                                             <td><span class="label label-success">Shipped</span></td>
                                             <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                                <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
                                             </td>
                                         </tr>
                                     </tbody>
