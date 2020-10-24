@@ -38,7 +38,7 @@ $resultClients = mysqli_query($mysqli_link, $selectClients);
               <table class="table">
                 <thead>
                       <tr>
-                        <th style="width: 5%">cid</th>
+                        <th style="width: 5%">hostname</th>
                         <th style="width: 20%">customer</th>
                         <th style="width: 12.5%">location</th>
                         <th style="width: 12.5%">osType</th>
@@ -80,7 +80,7 @@ $resultClients = mysqli_query($mysqli_link, $selectClients);
                   }
                     echo '
                       <tr>
-                        <td>'. $clientsRow["cid"] .'</td>
+                        <td><a href=client_view.php?cid='. $clientsRow["cid"] .'>'. $clientsRow["hostname"] .'</td>
                         <td>'; displayCustomerName($custID, $mysqli_link); echo '</td>
                         <td>'. $clientsRow["location"] .'</td>
                         <td>'. $clientsRow["osType"] .'</td>
