@@ -4,6 +4,7 @@ $pageName="clients";
 $pageTitle="Clients";
 
 require('config/database.php');
+include('resources/functions/shared_functions.php');
 include('resources/structure/head.php');
 include('resources/structure/navbar.php');
 include('resources/structure/contenthead.php');
@@ -51,6 +52,7 @@ $resultClients = mysqli_query($mysqli_link, $selectClients);
                 <tbody>
                 <?php
                   while ($clientsRow = mysqli_fetch_array($resultClients, MYSQLI_ASSOC)) {
+                    $custID = $clientsRow["custID"];
                     function time_elapsed_string($datetime, $full = false) {
                       $now = new DateTime;
                       $ago = new DateTime($datetime);
@@ -79,7 +81,7 @@ $resultClients = mysqli_query($mysqli_link, $selectClients);
                     echo '
                       <tr>
                         <td>'. $clientsRow["cid"] .'</td>
-                        <td>'. $clientsRow["custID"] .'</td>
+                        <td>'; displayCustomerName($custID) echo '</td>
                         <td>'. $clientsRow["location"] .'</td>
                         <td>'. $clientsRow["osType"] .'</td>
                         <td>'. $clientsRow["osArch"] .'</td>
