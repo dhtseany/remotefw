@@ -16,7 +16,7 @@ function displayClientData($cid, $mysqli_link) {
         <tr>
             <td><a href="#">'. $clientDataRow["hostname"] .'</a></td>
             <td><span class="badge badge-success">Shipped</span></td>
-            <td align="right"><?php clientDataRequested($cid, $clientDataRequested, $mysqli_link); ?></td>
+            <td align="right">#</td>
         </tr>
         ';
     }
