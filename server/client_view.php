@@ -14,6 +14,7 @@ include('resources/structure/navbar.php');
 include('resources/structure/contenthead.php');
 navBarDisplay($pageName);
 displayContentHead($pageName, $pageTitle);
+
 ?>
 
 <!-- Main content -->
@@ -35,41 +36,7 @@ displayContentHead($pageName, $pageTitle);
                             <div class="table-responsive">
                                 <table class="table no-margin">
                                     <tbody>
-                                        <tr>
-                                            <td><a href="#">OR9842</a></td>
-                                            <td><span class="badge badge-success">Shipped</span></td>
-                                            <td align="right">#</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                            <td><span class="badge badge-warning">Pending</span></td>
-                                            <td>#</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                            <td><span class="badge badge-danger">Delivered</span></td>
-                                            <td>#</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                            <td><span class="badge badge-info">Processing</span></td>
-                                            <td>#</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                            <td><span class="badge badge-warning">Pending</span></td>
-                                            <td>#</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                            <td><span class="badge badge-danger">Delivered</span></td>
-                                            <td>#</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                            <td><span class="badge badge-success">Shipped</span></td>
-                                            <td>#</td>
-                                        </tr>
+                                        <?php displayClientData($cid, $mysqli_link); ?>
                                     </tbody>
                                 </table>
                             </div>
