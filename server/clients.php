@@ -44,7 +44,7 @@ $resultClients = mysqli_query($mysqli_link, $selectClients);
                         <th style="width: 12.5%">osType</th>
                         <th style="width: 12.5%">osArch</th>
                         <th style="width: 7%">osVer</th>
-                        <th style="width: 5.5%">cpuCores</th>
+                        <th style="width: 5.5%">status</th>
                         <th style="width: 5%">lastCheckInTime</th>
                         <th style="width: 20%">Actions</th>
                       </tr>
@@ -86,7 +86,7 @@ $resultClients = mysqli_query($mysqli_link, $selectClients);
                         <td>'. $clientsRow["osType"] .'</td>
                         <td>'. $clientsRow["osArch"] .'</td>
                         <td>'. $clientsRow["osVer"] .'</td>
-                        <td>'. $clientsRow["cpuCores"] .'</td>
+                        <td align="right"><span class="badge badge-success">Online</span></td>
                         <td>'. time_elapsed_string($clientsRow["lastCheckInTime"]) .'</td>
                         <td>
                           <div class="btn-group">
