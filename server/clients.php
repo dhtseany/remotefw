@@ -86,9 +86,9 @@ $resultClients = mysqli_query($mysqli_link, $selectClients);
                         <td>'. $clientsRow["osType"] .'</td>
                         <td>'. $clientsRow["osArch"] .'</td>
                         <td>'. $clientsRow["osVer"] .'</td>
-                        <td align="right"><span class="badge badge-success">Online</span></td>
+                        <td><span class="badge badge-success">Online</span></td>
                         <td>'. time_elapsed_string($clientsRow["lastCheckInTime"]) .'</td>
-                        <td>
+                        <td align="right">
                           <div class="btn-group">
                             <button type="button" class="btn btn-danger">System</button>
                             <button type="button" class="btn btn-danger dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
