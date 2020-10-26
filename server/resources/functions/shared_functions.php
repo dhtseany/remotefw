@@ -19,7 +19,7 @@ function displayClientData($cid, $mysqli_link) {
         </tr>
         <tr>
             <td>Status</td>
-            <td><span class="badge badge-success">Online</span></td>
+            <td align="right"><span class="badge badge-success">Online</span></td>
         </tr>
         ';
     }
