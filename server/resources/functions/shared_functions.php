@@ -14,9 +14,12 @@ function displayClientData($cid, $mysqli_link) {
     while ($clientDataRow = mysqli_fetch_array($resultClientData, MYSQLI_ASSOC)) {
         echo '
         <tr>
-            <td><a href="#">'. $clientDataRow["hostname"] .'</a></td>
-            <td><span class="badge badge-success">Shipped</span></td>
-            <td align="right">#</td>
+            <td>Hostname</td>
+            <td align="right">'. $clientDataRow["hostname"] .'#</td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td><span class="badge badge-success">Online</span></td>
         </tr>
         ';
     }
