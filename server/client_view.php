@@ -36,32 +36,32 @@ displayContentHead($pageName, $pageTitle);
                                 <table class="table no-margin">
                                     <tbody>
                                         <tr>
-                                            <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                            <td><a href="#">OR9842</a></td>
                                             <td><span class="badge badge-success">Shipped</span></td>
                                         </tr>
                                         <tr>
                                             <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                            <td><span class="label label-warning">Pending</span></td>
+                                            <td><span class="badge badge-warning">Pending</span></td>
                                         </tr>
                                         <tr>
                                             <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                            <td><span class="label label-danger">Delivered</span></td>
+                                            <td><span class="badge badge-danger">Delivered</span></td>
                                         </tr>
                                         <tr>
                                             <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                            <td><span class="label label-info">Processing</span></td>
+                                            <td><span class="badge badge-info">Processing</span></td>
                                         </tr>
                                         <tr>
                                             <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                            <td><span class="label label-warning">Pending</span></td>
+                                            <td><span class="badge badge-warning">Pending</span></td>
                                         </tr>
                                         <tr>
                                             <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                            <td><span class="label label-danger">Delivered</span></td>
+                                            <td><span class="badge badge-danger">Delivered</span></td>
                                         </tr>
                                         <tr>
                                             <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                            <td><span class="label label-success">Shipped</span></td>
+                                            <td><span class="badge badge-success">Shipped</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
