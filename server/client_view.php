@@ -4,7 +4,7 @@ if (isset($_GET['cid'])) {
     $cid = $_GET['cid'];
 }
 
-$pageName="client";
+$pageName="clients";
 $pageTitle="Client Overview";
 
 require('config/database.php');
