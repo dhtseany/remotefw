@@ -36,20 +36,8 @@ $resultClients = mysqli_query($mysqli_link, $selectClients);
             <!-- /.card-header -->
             <div class="card-body p-0">
               <table class="table">
-                <thead>
-                      <tr>
-                        <th style="width: 5%">hostname</th>
-                        <th style="width: 20%">customer</th>
-                        <th style="width: 12.5%">location</th>
-                        <th style="width: 12.5%">osType</th>
-                        <th style="width: 12.5%">osArch</th>
-                        <th style="width: 7%">osVer</th>
-                        <th style="width: 5.5%">cpuCores</th>
-                        <th style="width: 5%">lastCheckInTime</th>
-                        <th style="width: 20%">Actions</th>
-                      </tr>
-                </thead>
-                <tbody>
+
+              <tbody>
                 <?php
                   while ($clientsRow = mysqli_fetch_array($resultClients, MYSQLI_ASSOC)) {
                     $custID = $clientsRow["custID"];
