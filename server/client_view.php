@@ -37,7 +37,7 @@ displayContentHead($pageName, $pageTitle);
                                     <tbody>
                                         <tr>
                                             <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                            <td><span class="label label-success">Shipped</span></td>
+                                            <td><span class="badge badge-success">Shipped</span></td>
                                         </tr>
                                         <tr>
                                             <td><a href="pages/examples/invoice.html">OR1848</a></td>
