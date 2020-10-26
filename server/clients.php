@@ -46,7 +46,7 @@ $resultClients = mysqli_query($mysqli_link, $selectClients);
                         <th style="width: 7%">osVer</th>
                         <th style="width: 5.5%">status</th>
                         <th style="width: 5%">lastCheckInTime</th>
-                        <th style="width: 20%">Actions</th>
+                        <th style="width: 20%"></th>
                       </tr>
                 </thead>
                 <tbody>
