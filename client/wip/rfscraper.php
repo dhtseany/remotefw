@@ -66,6 +66,13 @@ curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
 $result = curl_exec($ch);
 curl_close($ch);
 //check the result
-var_dump($result);
 
+if ($scriptAudit = "yes"); {
+
+    echo '[AUDIT]'. curl_getinfo($ch) .'<br/>';
+    echo '[AUDIT]'. curl_errno($ch) .'<br/>';
+    echo '[AUDIT]'. curl_error($ch) .'<br/>';
+
+    var_dump($result);
+}
 ?>
