@@ -26,16 +26,8 @@ function displayClientDataSummary($cid, $mysqli_link) {
                 <td align="right">'. $clientDataRow["osType"] .'</td>
             </tr>
             <tr>
-                <td>OS Arch</td>
-                <td align="right">'. $clientDataRow["osArch"] .'</td>
-            </tr>
-            <tr>
                 <td>Installed Version</td>
                 <td align="right">'. $clientDataRow["osVer"] .'</td>
-            </tr>
-            <tr>
-                <td>Number of CPU Cores</td>
-                <td align="right">'. $clientDataRow["cpuCores"] .'</td>
             </tr>
         ';
     }
