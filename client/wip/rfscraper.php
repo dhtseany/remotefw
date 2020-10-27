@@ -53,7 +53,7 @@ $systemDetails = array (
     'wanIp' =>urlencode($osVersion)
 );
 
-foreach ($fields as $key=>$value) { 
+foreach ($systemDetails as $key=>$value) { 
     $fields_string .= $key.'='.$value.'&';
 }
 
@@ -65,7 +65,7 @@ if ($scriptAudit = "yes"); {
 }
 
 $ch = curl_init();
-curl_setopt($ch,CURLOPT_URL, $url);
+curl_setopt($ch,CURLOPT_URL, $receiverURL);
 curl_setopt($ch,CURLOPT_POST, count($fields));
 curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
 $result = curl_exec($ch);
