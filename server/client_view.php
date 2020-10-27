@@ -52,7 +52,7 @@ displayContentHead($pageName, $pageTitle);
                             <div class="table-responsive">
                                 <table class="table no-margin">
                                     <tbody>
-                                        <?php displayClientDataInt($cid, $mysqli_link); ?>
+                                        <?php displayClientDataHardware($cid, $mysqli_link); ?>
                                     </tbody>
                                 </table>
                             </div>
