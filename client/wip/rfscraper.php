@@ -47,7 +47,7 @@ if ($scriptAudit = "yes");
 
     
 $systemDetails = array (
-    'cpuArch' =>urlencode($cpuArch,
+    'cpuArch' =>urlencode($cpuArch),
     'osType' = urlencode($osType),
     'osVersion' = urlencode($osVersion),
     'wanIp' = urlencode($osVersion)
