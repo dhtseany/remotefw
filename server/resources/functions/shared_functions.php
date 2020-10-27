@@ -41,6 +41,27 @@ function displayClientDataSummary($cid, $mysqli_link) {
     }
 }
 
+function displayClientDataHardware($cid, $mysqli_link) {
+    $selectClientData = "SELECT * FROM clients WHERE cid='$cid'";
+    $resultClientData = mysqli_query($mysqli_link, $selectClientData);
+    while ($clientDataRow = mysqli_fetch_array($resultClientData, MYSQLI_ASSOC)) {
+        echo '
+            <tr>        
+                <td>OS Arch</td>
+                <td align="right">'. $clientDataRow["osArch"] .'</td>
+            </tr>
+            <tr>
+                <td>Number of CPU Cores</td>
+                <td align="right">'. $clientDataRow["cpuCores"] .'</td>
+            </tr>
+            <tr>
+                <td>RAM Amount</td>
+                <td align="right">'. $clientDataRow["ram"] .'MB</td>
+            </tr>
+        ';
+    }
+}
+
 function displayClientDataInt($cid, $mysqli_link) {
     $selectClientData = "SELECT * FROM clients WHERE cid='$cid'";
     $resultClientData = mysqli_query($mysqli_link, $selectClientData);
