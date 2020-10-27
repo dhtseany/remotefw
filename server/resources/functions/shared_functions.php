@@ -62,7 +62,7 @@ function displayClientDataInt($cid, $mysqli_link) {
 function displayClientDataLogs($cid, $mysqli_link) {
     $selectClientData = "SELECT * FROM logs WHERE cid='$cid'";
     $resultClientData = mysqli_query($mysqli_link, $selectClientData);
-    while ($clientsRow = mysqli_fetch_array($resultClients, MYSQLI_ASSOC)) {
+    while ($clientDataRow = mysqli_fetch_array($resultClientData, MYSQLI_ASSOC)) {
         echo '
         <tr>
             <td>'. $clientDataRow["timestamp"] .'</td>
