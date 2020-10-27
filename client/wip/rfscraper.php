@@ -1,4 +1,5 @@
 <?php
+$receiverURL = 'http://172.16.254.172/receiver';
 $scriptAudit = "yes";
 
 // Initial OS Identitfication Checks
@@ -43,5 +44,28 @@ if ($scriptAudit = "yes");
     echo "[Audit][osVersion] " . $osVersion . "\n";
     echo "[Audit][wanIP] " . $wanIp . "\n";
     }
+
+    
+$systemDetails = array (
+    'cpuArch' =>urlencode($cpuArch,
+    'osType' = urlencode($osType),
+    'osVersion' = urlencode($osVersion),
+    'wanIp' = urlencode($osVersion)
+);
+
+foreach ($fields as $key=>$value) { 
+    $fields_string .= $key.'='.$value.'&';
+}
+
+rtrim($fields_string, '&');
+
+$ch = curl_init();
+curl_setopt($ch,CURLOPT_URL, $url);
+curl_setopt($ch,CURLOPT_POST, count($fields));
+curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+$result = curl_exec($ch);
+curl_close($ch);
+//check the result
+var_dump($result);
 
 ?>
