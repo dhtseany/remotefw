@@ -93,4 +93,6 @@ function displayClientDataLogs($cid, $mysqli_link) {
         ';
     }
 }
+
+// Test Comment
 ?>
