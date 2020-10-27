@@ -1,5 +1,5 @@
 <?php
-$receiverURL = 'http://172.16.254.172/receiver';
+$receiverURL = 'http://172.16.254.172/receiver/';
 $scriptAudit = "yes";
 
 // Initial OS Identitfication Checks
