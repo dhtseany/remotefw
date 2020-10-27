@@ -59,4 +59,17 @@ function displayClientDataInt($cid, $mysqli_link) {
     }
 }
 
+function displayClientDataLogs($cid, $mysqli_link) {
+    $selectClientData = "SELECT * FROM logs WHERE cid='$cid'";
+    $resultClientData = mysqli_query($mysqli_link, $selectClientData);
+    while ($clientsRow = mysqli_fetch_array($resultClients, MYSQLI_ASSOC)) {
+        echo '
+        <tr>
+            <td>'. $clientDataRow["timestamp"] .'</td>
+            <td>'. $clientDataRow["entryData"] .'</td>
+            <td align="right"><span class="badge badge-success">'. $clientDataRow["entryType"] .'</span></td>
+        </tr>
+        ';
+}
+
 ?>
