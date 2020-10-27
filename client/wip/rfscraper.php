@@ -47,10 +47,10 @@ if ($scriptAudit = "yes");
 
     
 $systemDetails = array (
-    'cpuArch' = urlencode($cpuArch),
-    'osType' = urlencode($osType),
-    'osVersion' = urlencode($osVersion),
-    'wanIp' = urlencode($osVersion)
+    'cpuArch' =>urlencode($cpuArch),
+    'osType' =>urlencode($osType),
+    'osVersion' =>urlencode($osVersion),
+    'wanIp' =>urlencode($osVersion)
 );
 
 foreach ($fields as $key=>$value) { 
