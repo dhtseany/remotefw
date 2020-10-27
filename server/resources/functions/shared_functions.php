@@ -21,6 +21,22 @@ function displayClientDataSummary($cid, $mysqli_link) {
                 <td>Status</td>
                 <td align="right"><span class="badge badge-success">Online</span></td>
             </tr>
+            <tr>
+                <td>Installed OS</td>
+                <td align="right">'. $clientDataRow["osType"] .'</td>
+            </tr>
+            <tr>
+                <td>OS Arch</td>
+                <td align="right">'. $clientDataRow["osArch"] .'</td>
+            </tr>
+            <tr>
+                <td>Installed Version</td>
+                <td align="right">'. $clientDataRow["osVer"] .'</td>
+            </tr>
+            <tr>
+                <td>Number of CPU Cores</td>
+                <td align="right">'. $clientDataRow["cpuCores"] .'</td>
+            </tr>
         ';
     }
 }
@@ -38,6 +54,7 @@ function displayClientDataInt($cid, $mysqli_link) {
                 <td>LAN</td>
                 <td align="right">'. $clientDataRow["lanIP"] .'</td>
             </tr>
+            
         ';
     }
 }
