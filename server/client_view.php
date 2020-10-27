@@ -42,7 +42,7 @@ displayContentHead($pageName, $pageTitle);
                     <!-- /.box -->
                 </div>
                 <!-- /.col -->
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="box box-info">
                         <div class="box-header with-border">
                             <h3 class="box-title">Interface Information</h3>
@@ -63,6 +63,28 @@ displayContentHead($pageName, $pageTitle);
                     <!-- /.box -->
                 </div>
                 <!-- /.col -->
+                <div class="col-md-3">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Interface Information</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table no-margin">
+                                    <tbody>
+                                        <?php displayClientDataInt($cid, $mysqli_link); ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+
             </div>
             <!-- /.row -->
             <div class="row">
