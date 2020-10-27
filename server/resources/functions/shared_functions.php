@@ -70,6 +70,6 @@ function displayClientDataLogs($cid, $mysqli_link) {
             <td align="right"><span class="badge badge-success">'. $clientDataRow["entryType"] .'</span></td>
         </tr>
         ';
+    }
 }
-
 ?>
