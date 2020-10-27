@@ -43,6 +43,8 @@ if [ $runCommand = "install" ]
         cp client_view.php $InstallDir/client_view.php
         echo "[COPY] Installing /resources to $InstallDir/resources"
         cp -R resources/ $InstallDir/resources
+        echo "[COPY] Installing /receiver to $InstallDir/receiver"
+        cp -R receiver/ $InstallDir/receiver
         echo "[PERM] Correcting file permissions"
         chown -R $httpUser:$httpGroup $InstallDir
 fi
