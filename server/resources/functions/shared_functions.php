@@ -60,7 +60,7 @@ function displayClientDataInt($cid, $mysqli_link) {
 }
 
 function displayClientDataLogs($cid, $mysqli_link) {
-    $selectClientData = "SELECT * FROM logs WHERE cid='$cid'";
+    $selectClientData = "SELECT * FROM logs WHERE cid='$cid' LIMIT 20";
     $resultClientData = mysqli_query($mysqli_link, $selectClientData);
     while ($clientDataRow = mysqli_fetch_array($resultClientData, MYSQLI_ASSOC)) {
         echo '
