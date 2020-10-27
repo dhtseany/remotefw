@@ -45,7 +45,7 @@ displayContentHead($pageName, $pageTitle);
                 <div class="col-md-3">
                     <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Interface Information</h3>
+                            <h3 class="box-title">Hardware Information</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
