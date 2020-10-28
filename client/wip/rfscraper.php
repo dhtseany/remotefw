@@ -65,8 +65,7 @@ foreach ($systemDetails as $key=>$value) {
 rtrim($assembledVars, '&');
 
 if ($scriptAudit = "yes"); {
-    var_dump($fields_string);
-    echo '\n';
+    var_dump($assembledVars);
 }
 
 encodeURL($assembledVars);
