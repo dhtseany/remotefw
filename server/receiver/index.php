@@ -15,5 +15,5 @@ echo '[decodedData]' .$decodedURL .'<br />';
 
 $decodedData = urldecode($decodedURL);
 
-echo '[DD1] '. $decodedData[1];
+echo '[DD] '. $decodedData;
 ?>
