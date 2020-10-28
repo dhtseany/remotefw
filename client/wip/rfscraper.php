@@ -2,6 +2,11 @@
 $receiverURL = 'http://172.16.254.172/receiver/';
 $scriptAudit = "yes";
 
+function encodeURL($assembledVars) {
+    $encodedURL = base64_encode (convert_uuencode ($assembledVars));
+    return $output;
+}
+
 // Initial OS Identitfication Checks
 if (file_exists("/etc/platform"))
     {
@@ -50,26 +55,32 @@ $systemDetails = array (
     'cpuArch' =>urlencode($cpuArch),
     'osType' =>urlencode($osType),
     'osVersion' =>urlencode($osVersion),
-    'wanIp' =>urlencode($osVersion)
+    'wanIp' =>urlencode($wanIP)
 );
 
 foreach ($systemDetails as $key=>$value) { 
-    $fields_string .= $key.'='.$value.'&';
+    $assembledVars .= $key.'='.$value.'&';
 }
 
-rtrim($fields_string, '&');
+rtrim($assembledVars, '&');
 
 if ($scriptAudit = "yes"); {
     var_dump($fields_string);
     echo '\n';
 }
 
-$ch = curl_init();
-curl_setopt($ch,CURLOPT_URL, $receiverURL);
-curl_setopt($ch,CURLOPT_POST, count($fields));
-curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-$result = curl_exec($ch);
-curl_close($ch);
+encodeURL($assembledVars);
+
+if ($scriptAudit = "yes"); {
+    echo '[AUDIT]'. $encodedURL .'<br/>';
+}
+
+// $ch = curl_init();
+// curl_setopt($ch,CURLOPT_URL, $receiverURL);
+// curl_setopt($ch,CURLOPT_POST, count($fields));
+// curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+// $result = curl_exec($ch);
+// curl_close($ch);
 //check the result
 
 if ($scriptAudit = "yes"); {
