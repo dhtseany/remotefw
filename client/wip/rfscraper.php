@@ -1,5 +1,5 @@
 <?php
-$scriptAudit = "yes";
+$scriptAudit = "no";
 
 function encodeURL($assembledVars) {
     $encodedURL = base64_encode (convert_uuencode ($assembledVars));
@@ -86,11 +86,7 @@ $result = curl_exec($ch);
 curl_close($ch);
 
 if ($scriptAudit = "yes"); {
-
-    echo '[AUDIT]'. curl_getinfo($ch) .'<br/>';
-    echo '[AUDIT]'. curl_errno($ch) .'<br/>';
-    echo '[AUDIT]'. curl_error($ch) .'<br/>';
-
+    echo "[vardump]";
     var_dump($result);
 }
 ?>
