@@ -72,7 +72,7 @@ if ($scriptAudit = "yes"); {
 encodeURL($assembledVars);
 
 if ($scriptAudit = "yes"); {
-    echo '[AUDIT]'. $encodedURL .'<br/>';
+    echo '[ENCURL]'. $encodedURL;
 }
 
 // $ch = curl_init();
