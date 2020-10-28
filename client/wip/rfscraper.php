@@ -10,21 +10,21 @@ function encodeURL($assembledVars) {
 if (file_exists("/etc/platform"))
     {
         // Yes, this is a pfSense system
-        if ($scriptAudit = "yes");
+        if ($scriptAudit == "yes");
             {echo "[Audit][Y] /etc/platform \n";}
         $osType = shell_exec('cat /etc/platform');
         $osVersion = shell_exec('cat /etc/version');
     } 
     else
         {    
-            if ($scriptAudit = "yes");
+            if ($scriptAudit == "yes");
             {echo "[Audit][N] /etc/platform \n";}
         }
 
 if (file_exists("/usr/local/sbin/opnsense-version"))
     {
         // Yes, this is an OPNSense system
-        if ($scriptAudit = "yes");
+        if ($scriptAudit == "yes");
             {echo "[Audit][Y] /usr/local/sbin/opnsense-version \n";}
         $osTypeOPNFull = shell_exec('/usr/local/sbin/opnsense-version');
         $osTypeOPNFullArray = explode(' ',trim($osTypeOPNFull));
@@ -33,7 +33,7 @@ if (file_exists("/usr/local/sbin/opnsense-version"))
     }
     else
        {    
-            if ($scriptAudit = "yes");
+            if ($scriptAudit == "yes");
                 {echo "[Audit][N] /usr/local/sbin/opnsense-version \n";}
         }
 
@@ -63,18 +63,18 @@ foreach ($systemDetails as $key=>$value) {
 
 rtrim($assembledVars, '&');
 
-if ($scriptAudit = "yes"); {
+if ($scriptAudit == "yes"); {
     var_dump($assembledVars);
 }
 
 $encodedURL = encodeURL($assembledVars);
 $receiverURL = 'http://172.16.254.172/receiver/?d='.$encodedURL;
 
-if ($scriptAudit = "yes"); {
+if ($scriptAudit == "yes"); {
     echo '[ENCURL]'. $encodedURL;
 }
 
-if ($scriptAudit = "yes"); {
+if ($scriptAudit == "yes"); {
     echo '[URL4CURL]'. $receiverURL;
 }
 
@@ -85,7 +85,7 @@ curl_setopt($ch,CURLOPT_URL, $receiverURL);
 $result = curl_exec($ch);
 curl_close($ch);
 
-if ($scriptAudit = "yes"); {
+if ($scriptAudit == "yes"); {
     echo "[vardump]";
     var_dump($result);
 }
