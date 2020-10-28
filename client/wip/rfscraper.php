@@ -68,7 +68,7 @@ if ($scriptAudit = "yes"); {
     var_dump($assembledVars);
 }
 
-encodeURL($assembledVars);
+$encodedURL = encodeURL($assembledVars);
 
 if ($scriptAudit = "yes"); {
     echo '[ENCURL]'. $encodedURL;
