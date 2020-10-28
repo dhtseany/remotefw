@@ -32,7 +32,7 @@ if (file_exists("/usr/local/sbin/opnsense-version"))
         $osVersion = $osTypeOPNFullArray[1];
     }
     else
-        {    
+       {    
             if ($scriptAudit = "yes");
                 {echo "[Audit][N] /usr/local/sbin/opnsense-version \n";}
         }
@@ -68,7 +68,8 @@ if ($scriptAudit = "yes"); {
 }
 
 $encodedURL = encodeURL($assembledVars);
-$receiverURL = 'http://172.16.254.172/receiver/?'.$encodedURL;
+$receiverURL = 'http://172.16.254.172/receiver/?d='.$encodedURL;
+
 if ($scriptAudit = "yes"); {
     echo '[ENCURL]'. $encodedURL;
 }
@@ -77,13 +78,12 @@ if ($scriptAudit = "yes"); {
     echo '[URL4CURL]'. $receiverURL;
 }
 
-// $ch = curl_init();
-// curl_setopt($ch,CURLOPT_URL, $receiverURL);
-// curl_setopt($ch,CURLOPT_POST, count($fields));
+$ch = curl_init();
+curl_setopt($ch,CURLOPT_URL, $receiverURL);
+// curl_setopt($ch,CURLOPT_POST, count($));
 // curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-// $result = curl_exec($ch);
-// curl_close($ch);
-//check the result
+$result = curl_exec($ch);
+curl_close($ch);
 
 if ($scriptAudit = "yes"); {
 
