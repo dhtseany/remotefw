@@ -4,7 +4,7 @@ $scriptAudit = "yes";
 
 function encodeURL($assembledVars) {
     $encodedURL = base64_encode (convert_uuencode ($assembledVars));
-    return $output;
+    return $encodedURL;
 }
 
 // Initial OS Identitfication Checks
