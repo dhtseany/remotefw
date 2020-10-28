@@ -15,5 +15,5 @@ echo '[decodedData]' .$decodedURL .'<br />';
 
 $decodedData = urldecode($decodedURL);
 
-echo '[DD] '. $decodedData['cpuArch'];
+var_dump($decodedData);
 ?>
