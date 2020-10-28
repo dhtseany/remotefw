@@ -64,5 +64,7 @@ if [ $runCommand = "remove" ]
         rm -rf $InstallDir/config
         echo "[DEL] Removing resources folder"
         rm -rf $InstallDir/resources
+        echo "[DEL] Removing receiver folder"
+        rm -rf $InstallDir/receiver
 
 fi

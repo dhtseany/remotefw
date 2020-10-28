@@ -8,9 +8,9 @@ function decodeURL($encodedVariables) {
     return $decodeURL;
 }
 
-
-
 $decodedURL = decodeURL($encodedVariables);
 
-echo '[data]' .$decodedURL;
+echo '[rawdata]' .$encodedVariables .'<br />';
+echo '[decodedData]' .$decodedURL .'<br />';
+
 ?>
