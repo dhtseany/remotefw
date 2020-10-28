@@ -1,5 +1,4 @@
 <?php
-$receiverURL = 'http://172.16.254.172/receiver/';
 $scriptAudit = "yes";
 
 function encodeURL($assembledVars) {
@@ -69,9 +68,13 @@ if ($scriptAudit = "yes"); {
 }
 
 $encodedURL = encodeURL($assembledVars);
-
+$receiverURL = 'http://172.16.254.172/receiver/?'.$encodedURL;
 if ($scriptAudit = "yes"); {
     echo '[ENCURL]'. $encodedURL;
+}
+
+if ($scriptAudit = "yes"); {
+    echo '[URL4CURL]'. $receiverURL;
 }
 
 // $ch = curl_init();
