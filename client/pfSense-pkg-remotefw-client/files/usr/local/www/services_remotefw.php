@@ -19,7 +19,7 @@ pfSense_MODULE:	shell
 
 require_once("guiconfig.inc");
 
-Header("Location: /");
+Header("Location: /services_remotefw.php");
 
 if (file_exists("/etc/remotefw/main.cfg")) {
 	$configRec = file_get_contents("/etc/remotefw/main.cfg");
