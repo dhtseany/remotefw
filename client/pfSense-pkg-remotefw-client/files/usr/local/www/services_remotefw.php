@@ -17,7 +17,7 @@ pfSense_MODULE:	shell
 ##|*MATCH=services_remotefw.php*
 ##|-PRIV
 
-$remotefwConfig = &$config['remotefw'];
+$remotefwConfig = &$config['remotefw']['uid'];
 require_once("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"), gettext("RemoteFW"));
@@ -38,7 +38,7 @@ $pgtitle = array(gettext("Services"), gettext("remoteFw"));
 
 echo 'Stuff goes here. <br />
 
-[AUDIT] '. $remotefwConfig['uid'] .'
+[AUDIT] '. $remotefwConfig .'
 
 
 <div class="infoblock">';
