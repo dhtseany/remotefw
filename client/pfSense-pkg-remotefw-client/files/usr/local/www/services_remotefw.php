@@ -39,10 +39,9 @@ $pgtitle = array(gettext("Services"), gettext("remoteFw"));
 
 <body link="#0000CC" vlink="#0000CC" alink="#0000CC">
 
-<?php include("fbegin.inc"); ?>
 
 Stuff goes here.
+s<?php include("foot.inc"); ?>
 
-<?php include("fend.inc"); ?>
 </body>
 </html>
