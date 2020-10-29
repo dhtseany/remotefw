@@ -46,6 +46,7 @@ $wanIp = shell_exec("curl -s http://whatismyip.akamai.com/");
 
 // Audit Checks
 if ($scriptAudit = "yes"){
+    echo "[Audit][uid] " . $uid . "\n";
     echo "[Audit][cpuArch] " . $cpuArch . "\n";
     echo "[Audit][osType] " . $osType . "\n";
     echo "[Audit][osVersion] " . $osVersion . "\n";
