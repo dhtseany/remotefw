@@ -7,6 +7,10 @@ function encodeURL($assembledVars) {
     return $encodedURL;
 }
 
+if ($scriptAudit == "yes"){
+    echo "[Audit][uid] ". $uid ." \n";
+}
+
 // Initial OS Identitfication Checks
 if (file_exists("/etc/platform"))
     {
