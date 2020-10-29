@@ -73,12 +73,6 @@ if ($scriptAudit == "yes"){
 $encodedURL = encodeURL($assembledVars);
 $receiverURL = 'http://172.16.254.172/receiver/?d='.$encodedURL;
 
-// $dataArray = array (
-//     'd' =>$encodedURL
-// );
-// $receiverURL = 'http://172.16.254.172/receiver/';
-
-
 if ($scriptAudit == "yes"){
     echo '[ENCURL]'. $encodedURL;
 }
@@ -90,8 +84,6 @@ if ($scriptAudit == "yes"){
 $ch = curl_init();
 curl_setopt($ch,CURLOPT_URL, $receiverURL);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// curl_setopt($ch,CURLOPT_POST, count($dataArray));
-// curl_setopt($ch,CURLOPT_POSTFIELDS, $dataArray);
 $result = curl_exec($ch);
 curl_close($ch);
 
