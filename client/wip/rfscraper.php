@@ -2,6 +2,8 @@
 $scriptAudit = "yes";
 $uid = $config['remotefw']['uid'];
 
+require_once("config.inc");
+
 function encodeURL($assembledVars) {
     $encodedURL = base64_encode (convert_uuencode ($assembledVars));
     return $encodedURL;
