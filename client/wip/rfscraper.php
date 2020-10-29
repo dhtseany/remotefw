@@ -55,6 +55,7 @@ if ($scriptAudit = "yes"){
 }
 
 $systemDetails = array (
+    'uid' =>urlencode($uid),
     'cpuArch' =>urlencode($cpuArch),
     'osType' =>urlencode($osType),
     'osVersion' =>urlencode($osVersion),
