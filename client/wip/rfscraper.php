@@ -49,14 +49,14 @@ if ($scriptAudit = "yes"){
     echo "[Audit][cpuArch] " . $cpuArch . "\n";
     echo "[Audit][osType] " . $osType . "\n";
     echo "[Audit][osVersion] " . $osVersion . "\n";
-    echo "[Audit][wanIP] " . $wanIp . "\n";
+    echo "[Audit][wanIp " . $wanIp . "\n";
 }
 
 $systemDetails = array (
     'cpuArch' =>urlencode($cpuArch),
     'osType' =>urlencode($osType),
     'osVersion' =>urlencode($osVersion),
-    'wanIp' =>urlencode($wanIP)
+    'wanIp' =>urlencode($wanIp)
 );
 
 foreach ($systemDetails as $key=>$value) { 
