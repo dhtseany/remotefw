@@ -35,7 +35,9 @@ display_top_tabs($tab_array);
 // }
 
 $pgtitle = array(gettext("Services"), gettext("remoteFw"));
-
+echo "Test:";
+echo $config['remotefw']['uid'];
+echo "<br />";
 echo 'Stuff goes here. <br />
 
 [AUDIT] '. $remotefwConfig .'
