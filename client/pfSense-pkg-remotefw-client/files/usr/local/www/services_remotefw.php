@@ -19,16 +19,21 @@ pfSense_MODULE:	shell
 
 require_once("guiconfig.inc");
 
-Header("Location: /services_remotefw.php");
+$pgtitle = array(gettext("Services"), gettext("RemoteFW"));
+include("head.inc");
 
-if (file_exists("/etc/remotefw/main.cfg")) {
-	$configRec = file_get_contents("/etc/remotefw/main.cfg");
-	$config = explode("\n", $configRec);
-}
+$tab_array = array();
+$tab_array[] = array(gettext("Settings"), true, "/packages/cron/cron.php");
+$tab_array[] = array(gettext("Add"), false, "/packages/cron/cron_edit.php");
+display_top_tabs($tab_array);
+
+
+// if (file_exists("/etc/remotefw/main.cfg")) {
+// 	$configRec = file_get_contents("/etc/remotefw/main.cfg");
+// 	$config = explode("\n", $configRec);
+// }
 
 $pgtitle = array(gettext("Services"), gettext("remoteFw"));
-
-require("head.inc");
 
 ?>
 
