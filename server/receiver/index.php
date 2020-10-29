@@ -15,18 +15,18 @@ $decodedData = urldecode($decodedURL);
 parse_str($decodedData, $decodedDataArray);
 
 if ($scriptAudit == "yes"){
-    echo "<p>"
-    echo "[rawdata]" .$encodedVariables ."<br />";
-    echo "[decodedData]" .$decodedURL;
-    echo "</p>"
+    echo "<p>";
+    echo "[rawdata] ". $encodedVariables ."<br />";
+    echo "[decodedData] ". $decodedURL;
+    echo "</p>";
 
-    echo "<p>"
+    echo "<p>";
     echo "[Audit][uid] ". $decodedDataArray['uid'] ."<br />";
     echo "[Audit][cpuArch] ". $decodedDataArray['cpuArch'] ."<br />";
     echo "[Audit][osType] ". $decodedDataArray['osType'] ."<br />";
     echo "[Audit][osVersion] ". $decodedDataArray['osVersion'] ."<br />";
     echo "[Audit][wanIp] ". $decodedDataArray['wanIp'] ."<br />";
-    echo "</p>"
+    echo "</p>";
 }
 
 ?>
