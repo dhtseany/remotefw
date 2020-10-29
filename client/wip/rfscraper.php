@@ -75,7 +75,7 @@ $encodedURL = encodeURL($assembledVars);
 $dataArray = array (
     'd' =>$encodedURL
 );
-$receiverURL = 'http://172.16.254.172/receiver';
+$receiverURL = 'http://172.16.254.172/receiver/';
 
 
 if ($scriptAudit == "yes"){
