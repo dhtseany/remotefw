@@ -15,5 +15,9 @@ echo '[decodedData]' .$decodedURL .'<br />';
 
 $decodedData = urldecode($decodedURL);
 
-var_dump($decodedData);
+// var_dump($decodedData);
+
+parse_str($decodedData, $decodedDataArray);
+
+print_r($decodedDataArray);
 ?>
