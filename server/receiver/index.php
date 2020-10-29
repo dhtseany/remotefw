@@ -1,4 +1,6 @@
 <?php
+$scriptAudit = "yes";
+
 if (isset($_GET['d'])) {
     $encodedVariables = $_GET['d'];
 }
@@ -19,5 +21,8 @@ $decodedData = urldecode($decodedURL);
 
 parse_str($decodedData, $decodedDataArray);
 
-print_r($decodedDataArray);
+if ($scriptAudit == "yes"){
+    echo "[Audit][cpuArch] ". $decodedDataArray['cpuArch'];
+}
+
 ?>
