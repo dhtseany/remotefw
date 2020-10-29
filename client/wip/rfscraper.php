@@ -1,8 +1,7 @@
 <?php
 $scriptAudit = "yes";
-$uid = $config['remotefw']['uid'];
-
 require_once("config.inc");
+$uid = $config['remotefw']['uid'];
 
 if ($scriptAudit == "yes"){
     if(isset($config)){
