@@ -4,6 +4,15 @@ $uid = $config['remotefw']['uid'];
 
 require_once("config.inc");
 
+if ($scriptAudit == "yes"){
+    if(isset($config)){
+        echo "[Audit][configset] yes \n";
+    }
+    else {
+        echo "[Audit][configset] no \n";
+    }
+}
+
 function encodeURL($assembledVars) {
     $encodedURL = base64_encode (convert_uuencode ($assembledVars));
     return $encodedURL;
