@@ -1,5 +1,5 @@
 <?php
-$scriptAudit = "yes";
+$scriptAudit = "no";
 
 if (isset($_GET['d'])) {
     $encodedVariables = $_GET['d'];
