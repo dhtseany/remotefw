@@ -29,9 +29,16 @@ fi
 if [ $runCommand = "install" ]
 	then
         echo "[NOTICE] User invoked Installation script."
+        
+        echo "[NEWDIR] Creating new folder /usr/local/pkg"
+        mkdir -p /usr/local/pkg
+
         echo "[COPY] Installing remotefw-client.xml to /usr/local/pkg/remotefw-client.xml"
         cp pfSense-pkg-remotefw-client/files/usr/local/pkg/remotefw-client.xml /usr/local/pkg/remotefw-client.xml
         
+        echo "[NEWDIR] Creating new folder /usr/local/share/pfSense-pkg-remotefw-client"
+        mkdir -p /usr/local/share/pfSense-pkg-remotefw-client
+
         echo "[COPY] Installing remotefw-client.xml to /usr/local/share/pfSense-pkg-remotefw-client/info.xml"
         cp pfSense-pkg-remotefw-client/files/usr/local/share/pfSense-pkg-remotefw-client/info.xml /usr/local/share/pfSense-pkg-remotefw-client/info.xml
         
