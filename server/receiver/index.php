@@ -11,18 +11,20 @@ function decodeURL($encodedVariables) {
 }
 
 $decodedURL = decodeURL($encodedVariables);
-
-echo '[rawdata]' .$encodedVariables .'<br />';
-echo '[decodedData]' .$decodedURL .'<br />';
-
 $decodedData = urldecode($decodedURL);
-
-// var_dump($decodedData);
-
 parse_str($decodedData, $decodedDataArray);
 
 if ($scriptAudit == "yes"){
-    echo "[Audit][cpuArch] ". $decodedDataArray['cpuArch'];
+    echo '[rawdata]' .$encodedVariables .'<br />';
+    echo '[decodedData]' .$decodedURL .'<br />';
+}
+
+
+if ($scriptAudit == "yes"){
+    echo "[Audit][cpuArch] ". $decodedDataArray['cpuArch'] .'<br />';
+    echo "[Audit][osType] ". $decodedDataArray['osType'] .'<br />';
+    echo "[Audit][osVersion] ". $decodedDataArray['osVersion'] .'<br />';
+    echo "[Audit][wanIp] ". $decodedDataArray['wanIp'] .'<br />';
 }
 
 ?>
