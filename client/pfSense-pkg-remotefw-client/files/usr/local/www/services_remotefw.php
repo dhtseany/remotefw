@@ -17,8 +17,6 @@ pfSense_MODULE:	shell
 ##|*MATCH=services_remotefw.php*
 ##|-PRIV
 
-require_once("config.inc");
-
 $remotefwConfig = &$config['remotefw']['uid'];
 require_once("guiconfig.inc");
 
