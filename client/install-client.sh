@@ -30,13 +30,13 @@ if [ $runCommand = "install" ]
 	then
         echo "[NOTICE] User invoked Installation script."
         echo "[COPY] Installing remotefw-client.xml to /usr/local/pkg/remotefw-client.xml"
-        cp ./pfSense-pkg-remotefw-client/files/usr/local/pkg/remotefw-client.xml /usr/local/pkg/remotefw-client.xml
+        cp pfSense-pkg-remotefw-client/files/usr/local/pkg/remotefw-client.xml /usr/local/pkg/remotefw-client.xml
         
         echo "[COPY] Installing remotefw-client.xml to /usr/local/share/pfSense-pkg-remotefw-client/info.xml"
-        cp ./pfSense-pkg-remotefw-client/files/usr/local/share/pfSense-pkg-remotefw-client/info.xml /usr/local/share/pfSense-pkg-remotefw-client/info.xml
+        cp pfSense-pkg-remotefw-client/files/usr/local/share/pfSense-pkg-remotefw-client/info.xml /usr/local/share/pfSense-pkg-remotefw-client/info.xml
         
         echo "[COPY] Installing services_remotefw.php to /usr/local/www/services_remotefw.php"
-        cp ./pfSense-pkg-remotefw-client/files/usr/local/www/services_remotefw.php /usr/local/www/services_remotefw.php
+        cp pfSense-pkg-remotefw-client/files/usr/local/www/services_remotefw.php /usr/local/www/services_remotefw.php
 fi
 
 if [ $runCommand = "remove" ]
