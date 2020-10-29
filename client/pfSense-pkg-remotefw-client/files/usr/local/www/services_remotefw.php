@@ -17,16 +17,18 @@ pfSense_MODULE:	shell
 ##|*MATCH=services_remotefw.php*
 ##|-PRIV
 
+require_once("config.inc");
+
 $remotefwConfig = &$config['remotefw']['uid'];
 require_once("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"), gettext("RemoteFW"));
 include("head.inc");
 
-$tab_array = array();
-$tab_array[] = array(gettext("Settings"), true, "/packages/cron/cron.php");
-$tab_array[] = array(gettext("Add"), false, "/packages/cron/cron_edit.php");
-display_top_tabs($tab_array);
+// $tab_array = array();
+// $tab_array[] = array(gettext("Settings"), true, "/packages/cron/cron.php");
+// $tab_array[] = array(gettext("Add"), false, "/packages/cron/cron_edit.php");
+// display_top_tabs($tab_array);
 
 
 // if (file_exists("/etc/remotefw/main.cfg")) {
@@ -35,7 +37,7 @@ display_top_tabs($tab_array);
 // }
 
 $pgtitle = array(gettext("Services"), gettext("remoteFw"));
-echo "Test:";
+echo "Test:<br />";
 echo $config['remotefw']['uid'];
 echo "<br />";
 echo 'Stuff goes here. <br />
