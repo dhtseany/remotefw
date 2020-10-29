@@ -71,7 +71,10 @@ if ($scriptAudit == "yes"){
 
 $encodedURL = encodeURL($assembledVars);
 // $receiverURL = 'http://172.16.254.172/receiver/?d='.$encodedURLVars;
-$dataArray = arary('d' => $encodedURL);
+
+$dataArray = arary(
+    'd' =>$encodedURL
+);
 $receiverURL = 'http://172.16.254.172/receiver';
 
 
