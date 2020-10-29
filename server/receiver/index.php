@@ -1,5 +1,5 @@
 <?php
-$scriptAudit = "no";
+$scriptAudit = "yes";
 
 if (isset($_GET['d'])) {
     $encodedVariables = $_GET['d'];
@@ -17,10 +17,6 @@ parse_str($decodedData, $decodedDataArray);
 if ($scriptAudit == "yes"){
     echo '[rawdata]' .$encodedVariables .'<br />';
     echo '[decodedData]' .$decodedURL .'<br />';
-}
-
-
-if ($scriptAudit == "yes"){
     echo "[Audit][cpuArch] ". $decodedDataArray['cpuArch'] .'<br />';
     echo "[Audit][osType] ". $decodedDataArray['osType'] .'<br />';
     echo "[Audit][osVersion] ". $decodedDataArray['osVersion'] .'<br />';
