@@ -86,5 +86,12 @@ function displayClientDataLogs($cid, $mysqli_link) {
     }
 }
 
-// Test Comment
+function checkIncomingClient() {
+    $selectClients = "SELECT * FROM clients";
+    $resultClients = mysqli_query($mysqli_link, $selectClients);
+    while ($clientDataRow = mysqli_fetch_array($resultClientData, MYSQLI_ASSOC)) {
+        // do something
+    }
+}
+
 ?>
