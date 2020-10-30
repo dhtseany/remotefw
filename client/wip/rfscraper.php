@@ -65,7 +65,7 @@ if ($scriptAudit = "yes"){
     echo "[Audit][cpuArch] " . $cpuArch . "\n";
     echo "[Audit][osType] " . $osType . "\n";
     echo "[Audit][osVersion] " . $osVersion . "\n";
-    echo "[Audit][wanIp " . $wanIp . "\n";
+    echo "[Audit][wanIp] " . $wanIp . "\n";
 }
 
 $systemDetails = array (
