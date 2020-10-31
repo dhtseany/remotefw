@@ -1,60 +1,57 @@
 <?php
 $scriptAudit = "yes";
-require_once("config.inc");
-$uid = $config['remotefw']['uid'];
 
-if ($scriptAudit == "yes"){
-    if(isset($config)){
-        echo "[Audit][configset] yes \n";
-    }
-    else {
-        echo "[Audit][configset] no \n";
-    }
-}
+require('rfshared_functions.php');
 
-function encodeURL($assembledVars) {
-    $encodedURL = base64_encode (convert_uuencode ($assembledVars));
-    return $encodedURL;
-}
-
-if ($scriptAudit == "yes"){
-    echo "[Audit][uid] ". $uid ." \n";
-}
+// function encodeURL($assembledVars) {
+//     $encodedURL = base64_encode (convert_uuencode ($assembledVars));
+//     return $encodedURL;
+// }
 
 // Initial OS Identitfication Checks
-if (file_exists("/etc/platform"))
-    {
-        // Yes, this is a pfSense system
-        if ($scriptAudit == "yes"){
-            echo "[Audit][Y] /etc/platform \n";
-        }
-        $osType = shell_exec('cat /etc/platform');
-        $osVersion = shell_exec('cat /etc/version');
-    } 
-    else
-        {    
-            if ($scriptAudit == "yes"){
-                echo "[Audit][N] /etc/platform \n";
-            }
-        }
+// if (file_exists("/etc/platform"))
+//     {
+//         // Yes, this is a pfSense system
+//         if ($scriptAudit == "yes"){
+//             echo "[Audit][Y] /etc/platform \n";
+//         }
+//         $osType = shell_exec('cat /etc/platform');
+//         $osVersion = shell_exec('cat /etc/version');
+//         require_once("config.inc");
+//         $uid = $config['remotefw']['uid'];
+//         if ($scriptAudit == "yes"){
+//             if(isset($config)){
+//                 echo "[Audit][configset] yes \n";
+//             }
+//             else {
+//                 echo "[Audit][configset] no \n";
+//             }
+//         }        
+//     } 
+//     else
+//         {    
+//             if ($scriptAudit == "yes"){
+//                 echo "[Audit][N] /etc/platform \n";
+//             }
+//         }
 
-if (file_exists("/usr/local/sbin/opnsense-version"))
-    {
-        // Yes, this is an OPNSense system
-        if ($scriptAudit == "yes"){
-            echo "[Audit][Y] /usr/local/sbin/opnsense-version \n";
-        }
-        $osTypeOPNFull = shell_exec('/usr/local/sbin/opnsense-version');
-        $osTypeOPNFullArray = explode(' ',trim($osTypeOPNFull));
-        $osType = $osTypeOPNFullArray[0];
-        $osVersion = $osTypeOPNFullArray[1];
-    }
-    else
-       {    
-            if ($scriptAudit == "yes"){
-                echo "[Audit][N] /usr/local/sbin/opnsense-version \n";
-            }
-        }
+// if (file_exists("/usr/local/sbin/opnsense-version"))
+//     {
+//         // Yes, this is an OPNSense system
+//         if ($scriptAudit == "yes"){
+//             echo "[Audit][Y] /usr/local/sbin/opnsense-version \n";
+//         }
+//         $osTypeOPNFull = shell_exec('/usr/local/sbin/opnsense-version');
+//         $osTypeOPNFullArray = explode(' ',trim($osTypeOPNFull));
+//         $osType = $osTypeOPNFullArray[0];
+//         $osVersion = $osTypeOPNFullArray[1];
+//     }
+//     else
+//        {    
+//             if ($scriptAudit == "yes"){
+//                 echo "[Audit][N] /usr/local/sbin/opnsense-version \n";
+//             }
+//         }
 
 $cpuArch = shell_exec("sysctl -a | egrep -i 'hw.machine_arch' | sed 's/.* //'");
 $wanIp = shell_exec("curl -s http://whatismyip.akamai.com/");
@@ -81,6 +78,8 @@ foreach ($systemDetails as $key=>$value) {
 }
 
 rtrim($assembledVars, '&');
+
+$encodedURL = encodeURL($assembledVars);
 
 if ($scriptAudit == "yes"){
     var_dump($assembledVars);
